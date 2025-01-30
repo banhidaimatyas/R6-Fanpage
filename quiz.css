@@ -1,0 +1,9 @@
+nav{
+    background-color: #24262a;
+}
+
+nav a{
+    color: white;
+}
+@media screen and (min-width: 994px) {
+}
