@@ -192,13 +192,20 @@ table {
 .show {
 	display: block;
 }
+/* article */
 
+article{
+	
+	padding: 60px 20px;
+	
+}
 
 
 
 /* DESKTOP */
 @media screen and (min-width: 994px) {
 
+	
 	/* navbar */
 	.desktop-nav {
 		display: block;
