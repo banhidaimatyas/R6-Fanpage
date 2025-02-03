@@ -142,8 +142,6 @@ table {
 
 /* MOBILE */
 
-
-
 /* navbar */
 .desktop-nav {
 	display: none;
@@ -212,11 +210,30 @@ table {
 	display: block;
 }
 
+/* article */
+
 article {
-	padding: 60px 20px;
+	padding: 40px 20px;
+	min-height: 50em;
+	background-color: #333;
+}
+
+/* section */
+
+section{
+	background-color: #000000;
+	color: white;
 }
 
 
+/* footer */
+footer{
+	width: 100%;
+	min-height: 100px;
+	background-color: #000000;
+	color: white;
+	
+}
 
 /* DESKTOP */
 @media screen and (min-width: 994px) {
