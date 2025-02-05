@@ -140,6 +140,15 @@ table {
 	src: url(Fonts/BebasNeue-Regular.ttf);
 }
 
+@font-face {
+	font-family: regular;
+	src: url(Fonts/Roboto_SemiCondensed-Regular.ttf);
+}
+
+body{
+	font-family: regular;
+}
+
 /* MOBILE */
 
 /* navbar */
@@ -213,7 +222,7 @@ table {
 /* article */
 
 article {
-	padding: 40px 20px;
+	padding: 30px 20px;
 	min-height: 50em;
 	background-color: #333;
 }
@@ -234,6 +243,8 @@ footer{
 	color: white;
 	
 }
+
+
 
 /* DESKTOP */
 @media screen and (min-width: 994px) {
@@ -280,4 +291,10 @@ footer{
 	.desktop-nav li a:hover{
 		background-image: linear-gradient(0deg, aqua, black, black);
 	}
+
+	/* article */
+
+	article {
+		padding: 70px 20px;
+}
 }
