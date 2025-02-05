@@ -10,7 +10,7 @@ let startScreen = document.querySelector(".start-screen");
 let startButton = document.getElementById("start-button");
 let questionCount;
 let scoreCount = 0;
-let count = 25;
+let count = 30;
 let countdown;
 
 const quizArray = [
@@ -111,10 +111,10 @@ nextBtn.addEventListener(
         userScore.innerHTML = "Az eredményed " + scoreCount + "/" + questionCount;
         } else {
         countOfQuestion.innerHTML =
-            questionCount + 1 + " of " + quizArray.length + " question";
+            questionCount + 1 + " a " + quizArray.length + " kérdésből";
 
         quizDisplay(questionCount);
-        count = 25;
+        count = 30;
         clearInterval(countdown);
         timerDisplay();
         }
@@ -151,7 +151,7 @@ const quizDisplay = (questionCount) => {
         let div = document.createElement("div");
         div.classList.add("container-mid", "hide");
 
-        countOfQuestion.innerHTML = 1 + " of " + quizArray.length + " Question";
+        countOfQuestion.innerHTML = 1 + " a " + quizArray.length + " kérdésből";
 
         let question_DIV = document.createElement("p");
         question_DIV.classList.add("question");
