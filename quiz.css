@@ -1,0 +1,136 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.start-screen,
+.score-container {
+    height: 100vh; 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: -30px;
+}
+
+#start-button,
+#restart {
+    font-size: 1.3em;
+    padding: 0.5em 1.8em;
+    border-radius: 0.2em;
+}
+
+#restart {
+    margin-top: 0.9em;
+}
+
+#display-container {
+    width: 90%;
+    max-width: 600px; 
+    max-height: 80vh; 
+    padding: 2em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: auto;
+}
+
+.header {
+    margin-bottom: 1.8em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.6em;
+}
+
+.timer-div {
+    background-color: #ffffff;
+    width: 7.5em;
+    border-radius: 1.8em;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7em 1.8em;
+}
+
+.question {
+    margin-bottom: 1.25em;
+    font-weight: 600;
+    font-size: 1.12em;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.option-div {
+    font-size: 1.1em;
+    width: 100%;
+    padding: 1em;
+    margin: 0.3em 0;
+    text-align: left;
+    outline: none;
+    background: transparent;
+    border-radius: 0.3em;
+    color: #ffffff;
+    background-color: rgb(21, 121, 202);
+    border-color: rgb(68, 143, 204);
+}
+
+.option-div:disabled {
+    color: #f8f8f8;
+    cursor: not-allowed;
+}
+
+#next-button {
+    font-size: 1em;
+    margin-top: 1.5em;
+    background-color: #ffffff;
+    color: black;
+    padding: 0.7em 1.8em;
+    border-radius: 0.3em;
+    float: right;
+}
+
+.hide {
+    display: none;
+}
+
+.incorrect {
+    background-color: #830510;
+    border-color: #9b2323;
+}
+
+.correct {
+    background-color: #446819;
+    border-color: #56852d;
+}
+
+#user-score {
+    font-size: 2em;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px; 
+}
+
+body{
+    background-image: linear-gradient(to bottom right, black, rgb(6, 13, 114));
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+img{
+    width: 50px;
+}
+
+.number-of-question{
+    color: #ffffff;
+}
