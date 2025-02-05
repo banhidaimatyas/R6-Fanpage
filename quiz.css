@@ -5,14 +5,6 @@ html, body {
     overflow: hidden;
 }
 
-nav{
-    background-color: #24262a;
-}
-
-nav a{
-    color: white;
-}
-
 * {
     padding: 0;
     margin: 0;
@@ -28,7 +20,7 @@ nav a{
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-top: -80px;
+    margin-top: -30px;
 }
 
 #start-button,
@@ -53,7 +45,6 @@ nav a{
     transform: translate(-50%, -50%);
     overflow: auto;
 }
-
 
 .header {
     margin-bottom: 1.8em;
@@ -130,7 +121,6 @@ nav a{
     margin-bottom: 20px; 
 }
 
-
 body{
     background-image: linear-gradient(to bottom right, black, rgb(6, 13, 114));
     background-repeat: no-repeat;
@@ -143,7 +133,4 @@ img{
 
 .number-of-question{
     color: #ffffff;
-}
-
-@media screen and (min-width: 994px) {
 }
