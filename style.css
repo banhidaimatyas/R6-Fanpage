@@ -245,19 +245,55 @@ footer{
 }
 
 /* index */
-.homepage-navigation .card-grid{
+
+.homepage-intro{
+	text-align: center;
 	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.homepage-intro h1{
+	font-size: 50px;
+	font-family: navFont;
+	padding: 0px 10px;
+	border-bottom: #333 solid 2px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	
+}
+.homepage-intro hr{
+	margin: 0;
+	margin-top: 20px;
+	border: #868686 1px solid;
+	width: 80%;
+
+}
+
+.homepage-navigation{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.homepage-navigation .card-grid{
+	display: grid;
     flex-direction: column;
     align-items: center;
     gap: 20px;
 	padding: 30px;
+	
 }
 
 .homepage-navigation .card-grid .card{
-	background-color: blue;
-	min-height: 100px;
-	min-width: 100px;
-	padding: 10px 10px;
+	background-color: #333;
+	padding: 10px 20px;
+}
+
+.homepage-navigation .card-grid .card img{
+	height: 200px;
+	width: 280px;
+	object-fit: cover;
 	border-radius: 5px;
 }
 
@@ -266,11 +302,13 @@ footer{
 	top: 50%; 
 	left: 50%; 
 	transform: translate(-50%, -50%); 
-	background-color: #000000; 
+	background-color: #000000b0; 
 	color: #fff; 
 	padding: 10px 20px; 
-	font-size: 20px; 
+	font-size: 35px; 
 	text-align: center;
+	font-family: navFont;
+	border-radius: 10px;
 }
 .homepage-navigation .image-container {
 	position: relative;
@@ -287,7 +325,7 @@ footer{
 
 
 
-/* DESKTOP */
+/* TABLET */
 @media screen and (min-width: 994px) {
 
 
@@ -339,4 +377,14 @@ footer{
 	article {
 		padding: 70px 20px;
 }
+	.homepage-navigation .card-grid{
+		grid-template-columns: auto auto;
+}	
+}
+
+/* DESKTOP */
+
+@media screen and (min-width: 1280px) {
+	.homepage-navigation .card-grid{
+		grid-template-columns: auto auto auto;}
 }
