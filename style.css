@@ -223,7 +223,6 @@ body{
 
 article {
 	padding: 30px 20px;
-	min-height: 50em;
 	background-color: #333;
 }
 
@@ -238,11 +237,39 @@ section{
 /* footer */
 footer{
 	width: 100%;
-	min-height: 100px;
 	background-color: #000000;
 	color: white;
+	font-family: navFont;
+	font-size: 20px;
 	
 }
+
+footer .flex-container .media ul {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+
+}
+footer .flex-container .media ul li img {
+	height: 45px;
+}
+
+.flex-container{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 60px;
+}
+
+.flex-container>div{
+	text-align: center;
+	min-width: 30%;
+}
+
+
+
 
 /* index */
 
@@ -377,9 +404,19 @@ footer{
 	article {
 		padding: 70px 20px;
 }
+
+	/* index */
+	
 	.homepage-navigation .card-grid{
 		grid-template-columns: auto auto;
 }	
+	.homepage-intro h1{
+		font-size: 90px;
+	}
+
+	.homepage-intro p{
+		font-size: 20px;
+	}
 }
 
 /* DESKTOP */
