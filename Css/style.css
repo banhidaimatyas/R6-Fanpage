@@ -137,12 +137,12 @@ table {
 
 @font-face {
 	font-family: navFont;
-	src: url(Fonts/BebasNeue-Regular.ttf);
+	src: url(../Fonts/BebasNeue-Regular.ttf);
 }
 
 @font-face {
 	font-family: regular;
-	src: url(Fonts/Roboto_SemiCondensed-Regular.ttf);
+	src: url(../Fonts/Roboto_SemiCondensed-Regular.ttf);
 }
 
 body{
