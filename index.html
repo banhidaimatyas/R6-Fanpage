@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Css/style.css">
     <script src="Javascript/navbar.js"></script>
+    <script src="Javascript/index.js"></script>
+    
     <title>R6-Fanpage</title>
 </head>
 
@@ -52,7 +54,7 @@
 
         <section class="homepage-navigation">
             <div class="card-grid">
-                <div class="card" id="nav1">
+                <div class="card" id="nav1" onclick="navigation(event)" onmouseover="highlight(event)" onmouseout="styleremove(event)">
                     <div class="image-container">
                         <div class="overlay-text">
                             <h2>Játékról</h2>
@@ -60,7 +62,7 @@
                         <div class="image"><img src="Images/oregon.jpg" alt="game"></div>
                     </div>
                 </div>
-                <div class="card" id="nav2">
+                <div class="card" id="nav2" onclick="navigation(event)" onmouseover="highlight(event)" onmouseout="styleremove(event)">
                     <div class="image-container">
                         <div class="overlay-text">
                             <h2>Operátorok</h2>
@@ -68,7 +70,7 @@
                         <div class="image"><img src="Images/operators.jpg" alt="ops"></div>
                     </div>
                 </div>
-                <div class="card" id="nav3">
+                <div class="card" id="nav3" onclick="navigation(event)" onmouseover="highlight(event)" onmouseout="styleremove(event)">
                     <div class="image-container">
                         <div class="overlay-text">
                             <h2>Szezonok</h2>
@@ -76,7 +78,7 @@
                         <div class="image"><img src="Images/seasons.jpg" alt="seasons"></div>
                     </div>
                 </div>
-                <div class="card" id="nav4">
+                <div class="card" id="nav4" onclick="navigation(event)" onmouseover="highlight(event)" onmouseout="styleremove(event)">
                     <div class="image-container">
                         <div class="overlay-text">
                             <h2>Esport</h2>
@@ -84,7 +86,7 @@
                         <div class="image"><img src="Images/esport.jpeg" alt="esport"></div>
                     </div>
                 </div>
-                <div class="card" id="nav5">
+                <div class="card" id="nav5" onclick="navigation(event)" onmouseover="highlight(event)" onmouseout="styleremove(event)">
                     <div class="image-container">
                         <div class="overlay-text">
                             <h2>Quiz</h2>
@@ -92,7 +94,7 @@
                         <div class="image"><img src="Images/quiz.jpg" alt="quiz"></div>
                     </div>
                 </div>
-                <div class="card" id="nav6">
+                <div class="card" id="nav6" onclick="navigation(event)" onmouseover="highlight(event)" onmouseout="styleremove(event)">
                     <div class="image-container">
                         <div class="overlay-text">
                             <h2>Guesser</h2>
@@ -100,7 +102,7 @@
                         <div class="image"><img src="Images/oregon_basement.jpg" alt="guesser"></div>
                     </div>
                 </div>
-                <div class="card" id="nav7">
+                <div class="card" id="nav7" onclick="navigation(event)" onmouseover="highlight(event)" onmouseout="styleremove(event)">
                     <div class="image-container">
                         <div class="overlay-text">
                             <h2>Rólunk</h2>
@@ -120,14 +122,16 @@
             </div>
             <div class="media">
                 <ul>
-                    <li><img src="Images/github.png" alt="github"></li>
-                    <li><img src="Images/instagram.png" alt="instagram"></li>
-                    <li><img src="Images/facebook.png" alt="facebook"></li>
+                    <li id="github"><img  src="Images/github.png" alt="github"></li>
+                    <li id="instagram"><img  src="Images/instagram.png" alt="instagram"></li>
+                    <li id="facebook"><img  src="Images/facebook.png" alt="facebook"></li>
                 </ul>
             </div>
-            <div class="empty"></div>
+            <div id="aboutus" class="text">
+                <p>rólunk</p>
+            </div>
         </div>
-
+        <script src="Javascript/footer.js"></script>
     </footer>
 </body>
 
