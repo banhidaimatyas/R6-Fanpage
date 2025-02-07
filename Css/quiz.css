@@ -57,7 +57,6 @@ html, body {
     overflow: auto; 
 }
 
-
 .header {
     margin-bottom: 1.8em;
     display: flex;
@@ -153,4 +152,10 @@ img{
 
 .number-of-question{
     color: #ffffff;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
 }
