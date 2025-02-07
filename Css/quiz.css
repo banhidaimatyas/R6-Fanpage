@@ -28,6 +28,19 @@ html, body {
     font-size: 1.3em;
     padding: 0.5em 1.8em;
     border-radius: 0.2em;
+    background-color: #ffffff;
+    color: black;
+    border: 2px solid black;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+#start-button:hover,
+#restart:hover {
+    background-color: rgb(21, 121, 202);
+    color: #ffffff;
+    transform: scale(1.05);
+    border-color: rgb(68, 143, 204);
 }
 
 #restart {
@@ -82,12 +95,20 @@ html, body {
     border-radius: 0.3em;
     color: #ffffff;
     background-color: rgb(21, 121, 202);
-    border-color: rgb(68, 143, 204);
+    border: 2px solid rgb(68, 143, 204);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.option-div:not(:disabled):hover {
+    color: #ffffff;
+    background-color: rgb(90, 165, 226);
+    border-color: rgb(64, 159, 236);
 }
 
 .option-div:disabled {
     color: #f8f8f8;
-    cursor: not-allowed;
+    cursor: default;
 }
 
 #next-button {
