@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+    background-color: brown;
+}
+
+.container{
+    display: flex;
+    height: 90vh;
+}
+
+.column{
+    display: flex;
+    padding: 20px;
+    text-align: center;
+}
+
+.left{
+    width: 33.3%;
+}
+
+.middle{
+    width: 33.3%;
+    background-image: url(../);
+}
+
+.right{
+    width: 33.3%;
+}
