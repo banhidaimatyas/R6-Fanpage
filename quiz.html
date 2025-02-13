@@ -44,8 +44,16 @@
     </header>
 
     <div class="start-screen">
+        <div class="description">
+            <h1><b>R6 Kvíz</b></h1>
+            <h2>Teszteld le R6 tudásod, ezzel a kvízzel!</h2>
+            <p>Minden kérdésnél 30 ms áll rendelkezésedre választani a 3 válasz lehetőség közül!</p>
+            <p>Ha egy kérdésre nem tudasz vagy nem akarsz válaszolni, akkor nyomj a következő gombra!</p>
+            <p>De jól vigyázz, ha egy kérdést átugrasz, akkor később már nem térhetsz vissza rá!</p>
+        </div>
         <button id="start-button">Start</button>
     </div>
+
     <div id="display-container">
         <div class="header">
             <div class="number-of-count">
@@ -64,6 +72,7 @@
             <h2 id="user-score">Pontok</h2>
             <button id="restart">Újra</button>
         </div>
+
         <script src="Javascript/quiz.js"></script>
         
         <footer>
@@ -73,12 +82,14 @@
                 </div>
                 <div class="media">
                     <ul>
-                        <li><img src="Images/github.png" alt="github"></li>
-                        <li><img src="Images/instagram.png" alt="instagram"></li>
-                        <li><img src="Images/facebook.png" alt="facebook"></li>
+                        <li id="github"><img  src="Images/github.png" alt="github"></li>
+                        <li id="instagram"><img  src="Images/instagram.png" alt="instagram"></li>
+                        <li id="facebook"><img  src="Images/facebook.png" alt="facebook"></li>
                     </ul>
                 </div>
-                <div class="empty"></div>
+                <div id="aboutus" class="text">
+                    <p>rólunk</p>
+                </div>
             </div>
             <script src="Javascript/footer.js"></script>
         </footer>

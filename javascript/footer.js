@@ -17,7 +17,7 @@ document.getElementById("facebook").onmouseover = function() {
     this.style.cursor = "pointer"
   };
 document.getElementById("instagram").onmouseover = function() {
-   this.style.cursor = "pointer"
+    this.style.cursor = "pointer"
   };
 document.getElementById("aboutus").onmouseover = function() {
     this.style.cursor = "pointer"

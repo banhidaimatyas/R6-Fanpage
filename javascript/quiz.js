@@ -105,7 +105,7 @@ nextBtn.addEventListener(
         displayContainer.classList.add("hide");
         scoreContainer.classList.remove("hide");
 
-        userScore.innerHTML = "Az eredményed " + scoreCount + "/" + questionCount;
+        userScore.innerHTML = "Az eredményed: " + scoreCount + "/" + questionCount + " pont.";
         } else {
         countOfQuestion.innerHTML =
             questionCount + 1 + " a " + quizArray.length + " kérdésből";
