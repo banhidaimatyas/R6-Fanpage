@@ -4,7 +4,7 @@ const operators = [
         description: "",
     },
     {
-        name: "Aruni".
+        name: "Aruni",
         description: "",
     },
     {
@@ -12,7 +12,7 @@ const operators = [
         description: "",
     },
     {
-        name: "Maestro"
+        name: "Maestro",
         description: "",
     },
     {
@@ -20,7 +20,7 @@ const operators = [
     },
     {
         description: "Thundebird",
-        image: "url(../)"
+        image: "../Images/operator_images/thunderbird_1.png",
     },
     {
         description: "Vigil",
@@ -35,6 +35,3 @@ const operators = [
 
 let active = operators[0];
 
-function Img(){
-    document.getElementById("operator-description").inner
-}

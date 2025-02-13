@@ -26,10 +26,28 @@ body{
 
 .right{
     width: 33.3%;
+    height: fit-content;
 }
+
+.card-grid{
+    display: grid;
+    flex-direction: column;
+    justify-content: center;
+}
+
 
 .operator-img{
     height: 103.40%;
 }
+@media screen and (min-width: 994px) {
 
+.card-grid{
+    grid-template-columns: auto auto;
+    
+}	
+}
 
+@media screen and (min-width: 1280px) {
+    .card-grid{
+	grid-template-columns: auto auto auto}
+}
