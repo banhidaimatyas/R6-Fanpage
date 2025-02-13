@@ -1,11 +1,12 @@
 body{
+    background-color: grey;
     margin: 0;
-    background-color: brown;
 }
 
 .container{
+    margin-top: 150px;
     display: flex;
-    height: 90vh;
+    height: 85vh;
 }
 
 .column{
@@ -20,9 +21,15 @@ body{
 
 .middle{
     width: 33.3%;
-    background-image: url(../);
+
 }
 
 .right{
     width: 33.3%;
 }
+
+.operator-img{
+    height: 103.40%;
+}
+
+
