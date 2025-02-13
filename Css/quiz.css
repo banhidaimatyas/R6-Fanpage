@@ -1,3 +1,14 @@
+@font-face {
+	font-family: regular;
+	src: url(../Fonts/Roboto_SemiCondensed-Regular.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: regular;
+}
+
 html, body {
     min-height: 100%;
     margin: 0;
@@ -11,11 +22,18 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    font-style: regular;
 }
 
-@font-face {
-	font-family: regular;
-	src: url(../Fonts/Roboto_SemiCondensed-Regular.ttf);
+.description{
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 110, 110);
+    padding: 20px;
+    margin: 20px;
+    font-size: 16px;
+    font-family: regular;
+    border-radius: 5px;
+    line-height: 20px;
 }
 
 h1{
@@ -23,21 +41,12 @@ h1{
     font-weight: bold;
     padding: 10px;
     font-family: regular;
+    border-bottom: #ffffff solid 2px;
+    text-shadow: 3px 3px 5px #000000;
 }
 
-.description{
-    color: rgb(0, 0, 0);
-    background-color: rgb(3, 197, 197);
-    padding: 20px;
-    margin: 10px;
-    font-size: 16px;
-    font-family: regular;
-}
-
-* {
-    padding: 0;
-    margin: 0;
-    font-family: regular;
+.description h2{
+    padding-top: 15px;
 }
 
 .start-screen,
@@ -49,7 +58,7 @@ h1{
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-top: -120px;
+    margin-top: -18vh;
 }
 
 #start-button,
@@ -83,7 +92,7 @@ h1{
     padding: 2em;
     margin: auto; 
     overflow: auto; 
-    margin-top: 40px;
+    margin-top: 70px;
 }
 
 .header {
@@ -95,12 +104,15 @@ h1{
 }
 
 .timer-div {
-    background-color: #ffffff;
+    background-color: white;
+    color: black;
     width: 7.5em;
     border-radius: 1.8em;
     align-items: center;
     justify-content: space-between;
-    padding: 0.7em 1.8em;
+    padding: 1em 1em;
+    font-size: large;
+    font-size: 16px;
 }
 
 .question {
@@ -201,7 +213,7 @@ footer {
     }
 
     #display-container {
-        margin-top: 10px;
+        margin-top: -5px;
     }
 
     h1{
@@ -209,7 +221,7 @@ footer {
     }
     
     .description{
-        font-size: 16px;
+        font-size: 15px;
     }
 
     .start-screen,
