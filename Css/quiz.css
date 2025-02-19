@@ -36,10 +36,11 @@ body{
     background-color: rgb(0, 43, 43);
     padding: 20px;
     margin: 20px;
-    font-size: 16px;
+    font-size: 18px;
     font-family: regular;
     border-radius: 5px;
-    line-height: 20px;
+    line-height: 23px;
+    /*text-align: justify;*/
 }
 
 h1{
@@ -98,7 +99,7 @@ h1{
     padding: 2em;
     margin: auto; 
     overflow: auto; 
-    margin-top: 70px;
+    margin-top: 40px;
 }
 
 .header {
@@ -219,7 +220,7 @@ footer {
     }
 
     #display-container {
-        margin-top: -5px;
+        margin-top: -10px;
     }
 
     h1{
