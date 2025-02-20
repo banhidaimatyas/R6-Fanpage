@@ -1,20 +1,4 @@
 let scoreImage = document.getElementById("score-image");
-
-const changeImageBasedOnScore = (userScore, maxScore) => {
-    let imageSrc = "";
-
-    if (userScore >= 14) {
-        imageSrc = "../Images/Ranks/champion.png";
-    } else if (userScore >= maxScore * 0.75) {
-        imageSrc = "great-score.jpg";
-    } else if (userScore >= maxScore * 0.5) {
-        imageSrc = "good-score.jpg";
-    } else {
-        imageSrc = "try-again.jpg";  
-    }
-    scoreImage.src = imageSrc;
-};
-
 let quizContainer = document.getElementById("container");
 let nextBtn = document.getElementById("next-button");
 let countOfQuestion = document.querySelector(".number-of-question");
@@ -28,6 +12,28 @@ let questionCount;
 let scoreCount = 0;
 let count = 31;
 let countdown;
+
+const changeImageBasedOnScore = (userScore, maxScore) => {
+    let imageSrc = "";
+    if (userScore > 14) {
+        imageSrc = "../Images/Ranks/champion.png";
+    } else if (userScore > 12 ) {
+        imageSrc = "../Images/Ranks/diamond.avif";
+    } else if (userScore > 10) {
+        imageSrc = "../Images/Ranks/emerald.avif";
+    } else if(userScore > 8){
+        imageSrc = "../Images/Ranks/platinum.png";
+    } else if(userScore > 6){
+        imageSrc = "../Images/Ranks/gold.png";
+    } else if(userScore > 4){
+        imageSrc = "../Images/Ranks/silver.png";
+    } else if(userScore > 2){
+        imageSrc = "../Images/Ranks/bronze.png";
+    } else {
+        imageSrc = "../Images/Ranks/copper.png";  
+    }
+    scoreImage.src = imageSrc;
+};
 
 const quizArray = [
     {
