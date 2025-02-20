@@ -48,8 +48,8 @@
 
 
     <div class="container">
-        <p class="column left" style="margin-top: 200px; font-weight: bold;" id="operator-description"> <span style="font-size: large;" id>Alibi:</span>Kevés életerejü operátor. 3 projektora van, ezekkel ellenfeleit megzavarva saját magát tudja kivetíteni. Ha a kivetített hologrammot kilövik, akkor az ellenfél látható lesz rövid ideig.</p>
-        <p class="column middle"><img class="operator-img" src="Images/operator_images/alibi_1.png" alt="Alibi" title="Alibi" id="operator-img"></p>
+        <div class="column left" style="margin-top: 200px;"><p style="font-weight: bold; font-size: 40px;" id="operator-name"></p></div>
+        <p class="column middle"><img class="operator-img" src="" alt="" id="operator-img"></p>
         <section class="column right">
             <div class="card-grid">
                 <div class="card" onmouseover="highlight(event)" onmouseout="styleremove(event)">
@@ -57,39 +57,30 @@
                         <div class="overlay-text">
 
                         </div>
-                        <div class="image"><img src="Images/operator_images/aruni.png" style="height: 80px;" alt="Aruni"></div>
+                        <div class="image"><img onclick="SelectedItem(0)" src="Images/operator_images/aruni.png" style="height: 80px;" alt="Aruni"></div>
                     </div>
                 </div>
                 <div class="card" onmouseover="highlight(event)" onmouseout="styleremove(event)">
                     <div class="image-container">
                         <div class="overlay-text">
                         </div>
-                        <div class="image"><img src="Images/operator_images/iq.png" style="height: 80px;" alt="game"></div>
+                        <div class="image"><img onclick="SelectedItem(3)" src="Images/operator_images/iq.png" style="height: 80px;" alt="game"></div>
                     </div>
                 </div>
 
-                <div class="card" onmouseover="highlight(event)" onmouseout="styleremove(event)">
+                <div class="card" onmouseover="highlight(event), toggleActive(event)" onmouseout="styleremove(event)">
                     <div class="image-container">
                         <div class="overlay-text">
                         </div>
-                        <div class="image"><img src="Images/operator_images/maestro.png" style="height: 80px;" alt="game"></div>
+                        <div class="image"><img onclick="SelectedItem(6)" src="Images/operator_images/maestro.png" style="height: 80px;" alt="game"></div>
                     </div>
                 </div>
 
-                <div class="card" onmouseover="highlight(event)" onmouseout="styleremove(event)">
+                <div class="card" onmouseover="highlight(event), toggleActive(event)" onmouseout="styleremove(event)">
                     <div class="image-container">
                         <div class="overlay-text">
                         </div>
-                        <div class="image"><img src="Images/operator_images/rook.png" style="height: 80px;" alt="game"></div>
-                    </div>
-                </div>
-
-
-                <div class="card" onmouseover="highlight(event)" onmouseout="styleremove(event)">
-                    <div class="image-container">
-                        <div class="overlay-text">
-                        </div>
-                        <div class="image"><img src="Images/operator_images/tachanka.png" style="height: 80px;" alt="game"></div>
+                        <div class="image"><img onclick="SelectedItem(1)" src="Images/operator_images/rook.png" style="height: 80px;" alt="game"></div>
                     </div>
                 </div>
 
@@ -98,7 +89,7 @@
                     <div class="image-container">
                         <div class="overlay-text">
                         </div>
-                        <div class="image"><img src="Images/operator_images/thunderbird.png" style="height: 80px;" alt="game"></div>
+                        <div class="image"><img onclick="SelectedItem(4)" src="Images/operator_images/tachanka.png" style="height: 80px;" alt="game"></div>
                     </div>
                 </div>
 
@@ -107,7 +98,7 @@
                     <div class="image-container">
                         <div class="overlay-text">
                         </div>
-                        <div class="image"><img src="Images/operator_images/vigil.png" style="height: 80px;" alt="game"></div>
+                        <div class="image"><img onclick="SelectedItem(7)" src="Images/operator_images/thunderbird.png" style="height: 80px;" alt="game"></div>
                     </div>
                 </div>
 
@@ -116,7 +107,16 @@
                     <div class="image-container">
                         <div class="overlay-text">
                         </div>
-                        <div class="image"><img src="Images/operator_images/wamai.png" style="height: 80px;" alt="game"></div>
+                        <div class="image"><img onclick="SelectedItem(2)" src="Images/operator_images/vigil.png" style="height: 80px;" alt="game"></div>
+                    </div>
+                </div>
+
+
+                <div class="card" onmouseover="highlight(event)" onmouseout="styleremove(event)">
+                    <div class="image-container">
+                        <div class="overlay-text">
+                        </div>
+                        <div class="image"><img onclick="SelectedItem(5)" src="Images/operator_images/wamai.png" style="height: 80px;" alt="game"></div>
                     </div>
                 </div>
 
@@ -124,7 +124,7 @@
                     <div class="image-container">
                         <div class="overlay-text">
                         </div>
-                        <div class="image"><img src="Images/operator_images/zero.png" style="height: 80px;" alt="game"></div>
+                        <div class="image"><img onclick="SelectedItem(8)" src="Images/operator_images/zero.png" style="height: 80px;" alt="game"></div>
                     </div>
                 </div>
 
