@@ -1,4 +1,4 @@
-let timeLeft = document.querySelector(".time-left");
+let scoreImage = document.getElementById("score-image");
 let quizContainer = document.getElementById("container");
 let nextBtn = document.getElementById("next-button");
 let countOfQuestion = document.querySelector(".number-of-question");
@@ -12,6 +12,28 @@ let questionCount;
 let scoreCount = 0;
 let count = 31;
 let countdown;
+
+const changeImageBasedOnScore = (userScore, maxScore) => {
+    let imageSrc = "";
+    if (userScore > 14) {
+        imageSrc = "../Images/Ranks/champion.png";
+    } else if (userScore > 12 ) {
+        imageSrc = "../Images/Ranks/diamond.avif";
+    } else if (userScore > 10) {
+        imageSrc = "../Images/Ranks/emerald.avif";
+    } else if(userScore > 8){
+        imageSrc = "../Images/Ranks/platinum.png";
+    } else if(userScore > 6){
+        imageSrc = "../Images/Ranks/gold.png";
+    } else if(userScore > 4){
+        imageSrc = "../Images/Ranks/silver.png";
+    } else if(userScore > 2){
+        imageSrc = "../Images/Ranks/bronze.png";
+    } else {
+        imageSrc = "../Images/Ranks/copper.png";  
+    }
+    scoreImage.src = imageSrc;
+};
 
 const quizArray = [
     {
@@ -110,14 +132,37 @@ const quizArray = [
         options: ["Azami", "IQ", "Pulse"],
         correct: "Pulse",
     },
-    
-    ];
+    {
+        id: "12",
+        question: "13. kérdés",
+        options: ["1. válasz", "2. válasz", "3. válasz"],
+        correct: "'Helyes válasz'",
+    },
+    {
+        id: "13",
+        question: "14. kérdés",
+        options: ["1. válasz", "2. válasz", "3. válasz"],
+        correct: "'Helyes válasz'",
+    },
+    {
+        id: "14",
+        question: "15. kérdés",
+        options: ["1. válasz", "2. válasz", "3. válasz"],
+        correct: "'Helyes válasz'",
+    },
+    {
+        id: "15",
+        question: "16. kérdés",
+        options: ["1. válasz", "2. válasz", "3. válasz"],
+        correct: "'Helyes válasz'",
+    },
+];
 
 restart.addEventListener("click", () => {
     initial();
     displayContainer.classList.remove("hide");
     scoreContainer.classList.add("hide");
-    });
+});
 
 nextBtn.addEventListener(
     "click",
@@ -125,30 +170,32 @@ nextBtn.addEventListener(
         questionCount += 1;
 
         if (questionCount == quizArray.length) {
-        clearInterval(countdown);
-        displayContainer.classList.add("hide");
-        scoreContainer.classList.remove("hide");
+            clearInterval(countdown);
+            displayContainer.classList.add("hide");
+            scoreContainer.classList.remove("hide");
 
-        userScore.innerHTML = "Az eredményed " + scoreCount + "/" + questionCount;
+            userScore.innerHTML = "Az eredményed: " + scoreCount + "/" + quizArray.length + " pont.";
+
+            changeImageBasedOnScore(scoreCount, quizArray.length);
         } else {
-        countOfQuestion.innerHTML =
-            questionCount + 1 + " a " + quizArray.length + " kérdésből";
+            countOfQuestion.innerHTML =
+                questionCount + 1 + " a " + quizArray.length + " kérdésből";
 
-        quizDisplay(questionCount);
-        count = 31;
-        clearInterval(countdown);
-        timerDisplay();
+            quizDisplay(questionCount);
+            count = 31;
+            clearInterval(countdown);
+            timerDisplay();
         }
     })
-    );
+);
 
 const timerDisplay = () => {
     countdown = setInterval(() => {
         count--;
         timeLeft.innerHTML = `${count}s`;
         if (count == 0) {
-        clearInterval(countdown);
-        displayNext();
+            clearInterval(countdown);
+            displayNext();
         }
     }, 1000);
 };
@@ -161,9 +208,9 @@ const quizDisplay = (questionCount) => {
     });
 
     quizCards[questionCount].classList.remove("hide");
-    };
+};
 
-    function quizCreator() {
+function quizCreator() {
     quizArray.sort(() => Math.random() - 0.5);
 
     for (let i of quizArray) {
@@ -212,9 +259,9 @@ function checker(userOption) {
     options.forEach((element) => {
         element.disabled = true;
     });
-    }
+}
 
-    function initial() {
+function initial() {
     quizContainer.innerHTML = "";
     questionCount = 0;
     scoreCount = 0;
@@ -223,15 +270,15 @@ function checker(userOption) {
     timerDisplay();
     quizCreator();
     quizDisplay(questionCount);
-    }
+}
 
-    startButton.addEventListener("click", () => {
+startButton.addEventListener("click", () => {
     startScreen.classList.add("hide");
     displayContainer.classList.remove("hide");
     initial();
-    });
+});
 
-    window.onload = () => {
+window.onload = () => {
     startScreen.classList.remove("hide");
     displayContainer.classList.add("hide");
 };

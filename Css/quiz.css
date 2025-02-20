@@ -1,27 +1,78 @@
-html, body {
-    min-height: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
+/*Nagyobb start betűstílus
+sorkizárt
+óra
+Ha ennyi pont ilyen rank
+*/
+
+@font-face {
+	font-family: regular;
+	src: url(../Fonts/Roboto_SemiCondensed-Regular.ttf);
 }
 
 * {
     padding: 0;
     margin: 0;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: regular;
+}
+
+html, body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+}
+
+body{
+    background-image: url("../Images/quiz_background2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-style: regular;
+    align-items: center;
+    justify-content: center;
+}
+
+.description{
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 43, 43);
+    padding: 20px;
+    margin: 20px;
+    font-size: 18px;
+    font-family: regular;
+    border-radius: 5px;
+    line-height: 23px;
+    /*text-align: justify;*/
+}
+
+h1{
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px;
+    font-family: regular;
+    border-bottom: #ffffff solid 2px;
+    text-shadow: 3px 3px 5px #000000;
+}
+
+.description h2{
+    padding-top: 15px;
 }
 
 .start-screen,
 .score-container {
-    height: 100vh; 
+    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-top: -30px;
+    margin-top: -13vh;
+    overflow: visible;
+}
+
+#score-image{
+    height: 40vh;
+    width: auto;
 }
 
 #start-button,
@@ -38,10 +89,10 @@ html, body {
 
 #start-button:hover,
 #restart:hover {
-    background-color: rgb(21, 121, 202);
+    background-color: rgba(0, 0, 0, 0.918);
+    border-color: rgba(99, 99, 99, 0.808);
     color: #ffffff;
     transform: scale(1.05);
-    border-color: rgb(68, 143, 204);
 }
 
 #restart {
@@ -55,6 +106,7 @@ html, body {
     padding: 2em;
     margin: auto; 
     overflow: auto; 
+    margin-top: 40px;
 }
 
 .header {
@@ -66,20 +118,23 @@ html, body {
 }
 
 .timer-div {
-    background-color: #ffffff;
+    background-color: white;
+    color: black;
     width: 7.5em;
     border-radius: 1.8em;
     align-items: center;
     justify-content: space-between;
-    padding: 0.7em 1.8em;
+    padding: 1em 1em;
+    font-size: large;
+    font-size: 16px;
 }
 
 .question {
     margin-bottom: 1.25em;
     font-weight: 600;
     font-size: 1.12em;
-    color: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    font-family: regular;
 }
 
 .option-div {
@@ -90,18 +145,17 @@ html, body {
     text-align: left;
     outline: none;
     background: transparent;
-    border-radius: 0.3em;
     color: #ffffff;
-    background-color: rgb(21, 121, 202);
-    border: 2px solid rgb(68, 143, 204);
+    background-color: rgb(0, 0, 0);
+    border: 2px solid rgb(39, 39, 39);
     transition: background-color 0.3s ease, border-color 0.3s ease;
     cursor: pointer;
 }
 
 .option-div:not(:disabled):hover {
     color: #ffffff;
-    background-color: rgb(90, 165, 226);
-    border-color: rgb(64, 159, 236);
+    background-color: rgb(3, 197, 197);
+    border-color: rgb(44, 194, 194);
 }
 
 .option-div:disabled {
@@ -115,8 +169,15 @@ html, body {
     background-color: #ffffff;
     color: black;
     padding: 0.7em 1.8em;
-    border-radius: 0.3em;
     float: right;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+#next-button:hover{
+    color: #ffffff;
+    background-color: rgb(2, 175, 175);
+    border-color: rgb(41, 179, 179);
+    transform: scale(1.05);
 }
 
 .hide {
@@ -136,14 +197,10 @@ html, body {
 #user-score {
     font-size: 2em;
     color: #ffffff;
+    background-color: black;
+    padding: 20px;
     text-align: center;
     margin-bottom: 20px; 
-}
-
-body{
-    background-image: linear-gradient(to bottom right, black, rgb(6, 13, 114));
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 img{
@@ -151,11 +208,38 @@ img{
 }
 
 .number-of-question{
-    color: #ffffff;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 5px;
+    font-family: regular;
 }
 
 footer {
     position: fixed;
     bottom: 0;
     left: 0;
+}
+
+@media only screen and (max-width: 994px) {
+    body {
+        background-position: center center;
+    }
+
+    #display-container {
+        margin-top: -10px;
+    }
+
+    h1{
+        font-size: 30px;
+    }
+    
+    .description{
+        font-size: 15px;
+    }
+
+    .start-screen,
+    .score-container {
+    margin-top: -120px;
+    }
 }
