@@ -12,6 +12,7 @@ let questionCount;
 let scoreCount = 0;
 let count = 31;
 let countdown;
+let timeLeft = document.getElementById("time-left");
 
 const changeImageBasedOnScore = (userScore, maxScore) => {
     let imageSrc = "";
@@ -134,6 +135,13 @@ const quizArray = [
     },
 ];
 
+window.onload = function () {
+    let timeLeft = document.getElementById("time-left");
+
+    startScreen.classList.remove("hide");
+    displayContainer.classList.add("hide");
+};
+
 restart.addEventListener("click", () => {
     initial();
     displayContainer.classList.remove("hide");
@@ -254,8 +262,3 @@ startButton.addEventListener("click", () => {
     displayContainer.classList.remove("hide");
     initial();
 });
-
-window.onload = () => {
-    startScreen.classList.remove("hide");
-    displayContainer.classList.add("hide");
-};
