@@ -197,12 +197,13 @@ function startGame() {
   const floors = ["second_floor", "first_floor", "basement"];
   const randomFloor = floors[Math.floor(Math.random() * floors.length)];
 
-  title.textContent = "Image";
+  title.textContent = `Találd meg ezt a szobát: ${theRoomToFind(randomFloor)}`;
   const img = chooseImage(randomFloor);
   img.useMap = "#imageMap";
   imageContainer.appendChild(img);
   imageContainer.appendChild(title);
   generateImageMap(randomFloor);
+  console.log(theRoomToFind(randomFloor))
 }
 
 function chooseImage(chosenFloor){
@@ -223,6 +224,34 @@ function chooseImage(chosenFloor){
       break;
     }
   return img
+}
+
+function theRoomToFind(chosenFloor){
+  var list = []
+  switch (chosenFloor) {
+    case "basement":
+      var rooms = Oregon.levels[0].rooms;
+      Object.entries(rooms).forEach(([roomId, roomData]) => {
+        list.push(roomData.roomName)
+      });
+      break;
+    case "first_floor":
+      var rooms = Oregon.levels[1].rooms; 
+      Object.entries(rooms).forEach(([roomId, roomData]) => {
+        list.push(roomData.roomName)
+      });
+      break;
+    case "second_floor":
+      var rooms = Oregon.levels[2].rooms;
+      Object.entries(rooms).forEach(([roomId, roomData]) => {
+        list.push(roomData.roomName)
+      });
+      break;
+    default:
+      break;
+    }
+    var room = list[Math.floor(Math.random() * list.length)];
+  return room
 }
 
 function generateImageMap(chosenFloor) {
