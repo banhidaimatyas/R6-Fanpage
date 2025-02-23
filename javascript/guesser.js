@@ -189,69 +189,54 @@ const Oregon = {
 };
 
 function startGame() {
-  console.log(typeof Oregon.levels[0].rooms);
   document.getElementById("menu").remove();
   const imageContainer = document.getElementById("image-container");
   const title = document.createElement("h2");
 
   const floors = ["second_floor", "first_floor", "basement"];
   const randomFloor = floors[Math.floor(Math.random() * floors.length)];
+  var theRoomToFind = theRoomToFindGenerate(randomFloor);
 
-  title.textContent = `Találd meg ezt a szobát: ${theRoomToFind(randomFloor)}`;
+  title.textContent = `Találd meg ezt a szobát: ${theRoomToFind}`;
   const img = chooseImage(randomFloor);
   img.useMap = "#imageMap";
   imageContainer.appendChild(img);
   imageContainer.appendChild(title);
   generateImageMap(randomFloor);
-  console.log(theRoomToFind(randomFloor))
 }
 
-function chooseImage(chosenFloor){
+function chosenFloorIndex(chosenFloor) {
   switch (chosenFloor) {
     case "basement":
-      var img = document.createElement("img");
-      img.src = "../Images/Oregon_blueprints/r6-maps-oregon-blueprint-1.jpg";
+      var index = 0;
       break;
     case "first_floor":
-      var img = document.createElement("img");
-      img.src = "../Images/Oregon_blueprints/r6-maps-oregon-blueprint-2.jpg";
+      var index = 1;
       break;
     case "second_floor":
-      var img = document.createElement("img");
-      img.src = "../Images/Oregon_blueprints/r6-maps-oregon-blueprint-3.jpg";
+      var index = 2;
       break;
+
     default:
       break;
-    }
-  return img
+  }
+  return index;
 }
 
-function theRoomToFind(chosenFloor){
-  var list = []
-  switch (chosenFloor) {
-    case "basement":
-      var rooms = Oregon.levels[0].rooms;
-      Object.entries(rooms).forEach(([roomId, roomData]) => {
-        list.push(roomData.roomName)
-      });
-      break;
-    case "first_floor":
-      var rooms = Oregon.levels[1].rooms; 
-      Object.entries(rooms).forEach(([roomId, roomData]) => {
-        list.push(roomData.roomName)
-      });
-      break;
-    case "second_floor":
-      var rooms = Oregon.levels[2].rooms;
-      Object.entries(rooms).forEach(([roomId, roomData]) => {
-        list.push(roomData.roomName)
-      });
-      break;
-    default:
-      break;
-    }
-    var room = list[Math.floor(Math.random() * list.length)];
-  return room
+function chooseImage(chosenFloor) {
+  var img = document.createElement("img");
+  img.src = `../Images/Oregon_blueprints/r6-maps-oregon-blueprint-${chosenFloorIndex(chosenFloor)+1}.jpg`;
+  return img;
+}
+
+function theRoomToFindGenerate(chosenFloor) {
+  var list = [];
+  var rooms = Oregon.levels[chosenFloorIndex(chosenFloor)].rooms;
+  Object.entries(rooms).forEach(([roomId, roomData]) => {
+    list.push(roomData.roomName);
+  });
+  var room = list[Math.floor(Math.random() * list.length)];
+  return room;
 }
 
 function generateImageMap(chosenFloor) {
@@ -261,66 +246,22 @@ function generateImageMap(chosenFloor) {
   imageContainer.appendChild(map);
   const mapContainer = document.getElementsByClassName("map");
 
-  switch (chosenFloor) {
-    case "basement":
-      var rooms = Oregon.levels[0].rooms;
-      Object.entries(rooms).forEach(([roomId, roomData]) => {
-        // mapareas
-        const area = document.createElement("area");
-        area.shape = "poly";
-        area.coords = roomData.coordinates;
-        area.id = roomData.roomName;
-        map.appendChild(area);
-        const roomElement = document.getElementById(roomData.roomName);
-        // onclick
-        if (roomElement) {
-          roomElement.onclick = function () {
-            console.log(`Mouseover on: ${roomData.roomName}`);
-          };
-        }
-      });
-
-      break;
-    case "first_floor":
-      var rooms = Oregon.levels[1].rooms;
-      Object.entries(rooms).forEach(([roomId, roomData]) => {
-        // mapareas
-        const area = document.createElement("area");
-        area.shape = "poly";
-        area.coords = roomData.coordinates;
-        area.id = roomData.roomName;
-        map.appendChild(area);
-        // onclick
-        const roomElement = document.getElementById(roomData.roomName);
-        if (roomElement) {
-          roomElement.onclick = function () {
-            console.log(`Mouseover on: ${roomData.roomName}`);
-          };
-        }
-      });
-      break;
-    case "second_floor":
-      var rooms = Oregon.levels[2].rooms;
-      Object.entries(rooms).forEach(([roomId, roomData]) => {
-        // mapareas
-        const area = document.createElement("area");
-        area.shape = "poly";
-        area.coords = roomData.coordinates;
-        area.id = roomData.roomName;
-        map.appendChild(area);
-        const roomElement = document.getElementById(roomData.roomName);
-        // onclick
-        if (roomElement) {
-          roomElement.onclick = function () {
-            console.log(`Mouseover on: ${roomData.roomName}`);
-          };
-        }
-      });
-      break;
-
-    default:
-      break;
-  }
+  var rooms = Oregon.levels[chosenFloorIndex(chosenFloor)].rooms;
+  Object.entries(rooms).forEach(([roomId, roomData]) => {
+    // mapareas
+    const area = document.createElement("area");
+    area.shape = "poly";
+    area.coords = roomData.coordinates;
+    area.id = roomData.roomName;
+    map.appendChild(area);
+    const roomElement = document.getElementById(roomData.roomName);
+    // onclick
+    if (roomElement) {
+      roomElement.onclick = function () {
+        console.log(`Mouseover on: ${roomData.roomName}`);
+      };
+    }
+  });
 }
 
 /* <area target="" alt="Freezer" title="Freezer" href="" coords="300,375,443,373,442,231,406,230,408,318,297,317" shape="poly">
