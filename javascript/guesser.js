@@ -197,7 +197,7 @@ function startGame() {
   const randomFloor = floors[Math.floor(Math.random() * floors.length)];
   var theRoomToFind = theRoomToFindGenerate(randomFloor);
 
-  title.textContent = `Találd meg ezt a szobát: ${theRoomToFind}`;
+  title.innerHTML = `Találd meg ezt a szobát:<br> ${theRoomToFind}`;
   const img = chooseImage(randomFloor);
   img.useMap = "#imageMap";
   imageContainer.appendChild(img);

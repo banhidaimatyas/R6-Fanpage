@@ -1,3 +1,13 @@
+@font-face {
+	font-family: navFont;
+	src: url(../Fonts/BebasNeue-Regular.ttf);
+}
+
+@font-face {
+	font-family: regular;
+	src: url(../Fonts/Roboto_SemiCondensed-Regular.ttf);
+}
+
 #menu {
     width: 854px;
     height: 480px;
@@ -7,6 +17,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border-radius: 5px;
+    border: 2px solid black;
 }
 .article .div button {
     padding: 10px 20px;
@@ -20,15 +32,33 @@
 }
 #image-container {
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+} 
+#image-container img{
+    border-radius: 5px;
+    border: 2px solid black;
+
 }
-.article .div img {
-    width: 854px;
-    height: 480px;
-    object-fit: cover;
+#image-container h2{
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: white;
+    width: 250px;
+    font-family: navFont;
+    padding: 20px;
+    font-size: 30px;
+    border-left: 2px solid black;
+    border-right: 2px solid black;;
+    border-bottom: 2px solid black;;
+
 }
 #content{
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 76vh
+    min-height: 76vh;
+    
 }
