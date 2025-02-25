@@ -12,6 +12,7 @@ let questionCount;
 let scoreCount = 0;
 let count = 31;
 let countdown;
+let timeLeft = document.getElementById("time-left");
 
 const changeImageBasedOnScore = (userScore, maxScore) => {
     let imageSrc = "";
@@ -38,9 +39,9 @@ const changeImageBasedOnScore = (userScore, maxScore) => {
 const quizArray = [
     {
         id: "0",
-        question: "Ki lesz az új operátor Y10S1-ban?",//(bele ne írd a végén hogy hanyadik kérdés, mert a sorrend randomizált)
+        question: "Ki lesz az új operátor Y10S1-ban?",
         options: ["Phobos", "Aurora", "Phoebe"],
-        correct: "Aurora",//(csak ismételd meg az egyik választ)
+        correct: "Aurora",
     },
     { 
         id: "1",
@@ -132,31 +133,14 @@ const quizArray = [
         options: ["Azami", "IQ", "Pulse"],
         correct: "Pulse",
     },
-    {
-        id: "12",
-        question: "13. kérdés",
-        options: ["1. válasz", "2. válasz", "3. válasz"],
-        correct: "'Helyes válasz'",
-    },
-    {
-        id: "13",
-        question: "14. kérdés",
-        options: ["1. válasz", "2. válasz", "3. válasz"],
-        correct: "'Helyes válasz'",
-    },
-    {
-        id: "14",
-        question: "15. kérdés",
-        options: ["1. válasz", "2. válasz", "3. válasz"],
-        correct: "'Helyes válasz'",
-    },
-    {
-        id: "15",
-        question: "16. kérdés",
-        options: ["1. válasz", "2. válasz", "3. válasz"],
-        correct: "'Helyes válasz'",
-    },
 ];
+
+window.onload = function () {
+    let timeLeft = document.getElementById("time-left");
+
+    startScreen.classList.remove("hide");
+    displayContainer.classList.add("hide");
+};
 
 restart.addEventListener("click", () => {
     initial();
@@ -190,6 +174,7 @@ nextBtn.addEventListener(
 );
 
 const timerDisplay = () => {
+    if (countdown) clearInterval(countdown);
     countdown = setInterval(() => {
         count--;
         timeLeft.innerHTML = `${count}s`;
@@ -277,8 +262,3 @@ startButton.addEventListener("click", () => {
     displayContainer.classList.remove("hide");
     initial();
 });
-
-window.onload = () => {
-    startScreen.classList.remove("hide");
-    displayContainer.classList.add("hide");
-};
