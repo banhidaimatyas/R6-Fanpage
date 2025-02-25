@@ -188,23 +188,62 @@ const Oregon = {
   },
 };
 
+var points = 0;
+let round = 1;
+let gameRunning = false;
+
+
 function startGame() {
   document.getElementById("menu").remove();
+  if (!gameRunning) {
+      gameRunning = true;
+      console.log("Game started! Round: " + round);
+      setupRound();
+  }
+}
+
+function nextRound() {
+  if (round <=9) {
+    if (gameRunning) {
+      round++;
+      console.log("Moving to round " + round);
+      setupRound();
+  }
+  }
+  else{
+    showEndScreen()
+  }
+  
+}
+
+function showEndScreen() {
+  imageContainer = document.getElementById("image-container")
+  const endScreen = document.createElement("div")
+  endScreen.id = "endscreen"
+  imageContainer.appendChild(endScreen)
+  const result = document.createElement("h2")
+  result.id = "result"
+  result.innerHTML = `Az eredményed:<br> ${points}/10`
+  document.getElementById("endscreen").appendChild(result)
+}
+
+
+
+function setupRound() {
   const imageContainer = document.getElementById("image-container");
   const title = document.createElement("h2");
-
+  title.id = "title"
   const floors = ["second_floor", "first_floor", "basement"];
   const randomFloor = floors[Math.floor(Math.random() * floors.length)];
   var theRoomToFind = theRoomToFindGenerate(randomFloor);
-
   title.innerHTML = `Találd meg ezt a szobát:<br> ${theRoomToFind}`;
   const img = chooseImage(randomFloor);
+  img.id = "img"
   img.useMap = "#imageMap";
   imageContainer.appendChild(img);
   imageContainer.appendChild(title);
-  generateImageMap(randomFloor);
+  imageMapAreas(randomFloor, theRoomToFind);
 }
-
 function chosenFloorIndex(chosenFloor) {
   switch (chosenFloor) {
     case "basement":
@@ -225,7 +264,9 @@ function chosenFloorIndex(chosenFloor) {
 
 function chooseImage(chosenFloor) {
   var img = document.createElement("img");
-  img.src = `../Images/Oregon_blueprints/r6-maps-oregon-blueprint-${chosenFloorIndex(chosenFloor)+1}.jpg`;
+  img.src = `../Images/Oregon_blueprints/r6-maps-oregon-blueprint-${
+    chosenFloorIndex(chosenFloor) + 1
+  }.jpg`;
   return img;
 }
 
@@ -239,12 +280,12 @@ function theRoomToFindGenerate(chosenFloor) {
   return room;
 }
 
-function generateImageMap(chosenFloor) {
+function imageMapAreas(chosenFloor, theRoomToFind) {
   const map = document.createElement("map");
   map.name = "imageMap";
+  map.id = "map"
   const imageContainer = document.getElementById("image-container");
   imageContainer.appendChild(map);
-  const mapContainer = document.getElementsByClassName("map");
 
   var rooms = Oregon.levels[chosenFloorIndex(chosenFloor)].rooms;
   Object.entries(rooms).forEach(([roomId, roomData]) => {
@@ -256,12 +297,39 @@ function generateImageMap(chosenFloor) {
     map.appendChild(area);
     const roomElement = document.getElementById(roomData.roomName);
     // onclick
+    var clickedRoom = "";
     if (roomElement) {
       roomElement.onclick = function () {
-        console.log(`Mouseover on: ${roomData.roomName}`);
+        clickedRoom = roomData.roomName;
+        console.log(clickedRoom);
+        
+        roundEnd(clickedRoom, theRoomToFind);
+        nextRound()
+        
       };
     }
   });
+}
+
+function roundEnd(clickedRoom, theRoomToFind) {
+  var roundEnded = false;
+  if (clickedRoom === theRoomToFind) {
+    points += 1;
+    document.getElementById("map").remove();
+    document.getElementById("title").remove();
+    document.getElementById("img").remove();
+    clickedRoom = "";
+    roundEnded = true;
+    
+    
+  } else {
+    document.getElementById("map").remove();
+    document.getElementById("title").remove();
+    document.getElementById("img").remove();
+    clickedRoom = "";
+    roundEnded = true;
+  }
+  return roundEnded;
 }
 
 /* <area target="" alt="Freezer" title="Freezer" href="" coords="300,375,443,373,442,231,406,230,408,318,297,317" shape="poly">
