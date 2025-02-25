@@ -192,53 +192,54 @@ var points = 0;
 let round = 1;
 let gameRunning = false;
 
-
 function startGame() {
   document.getElementById("menu").remove();
+  points = 0;
+  round = 0;
   if (!gameRunning) {
-      gameRunning = true;
-      console.log("Game started! Round: " + round);
-      setupRound();
+    gameRunning = true;
+    console.log("Game started! Round: " + round);
+    setupRound();
   }
 }
 
 function nextRound() {
-  if (round <=9) {
+  if (round <= 9) {
     if (gameRunning) {
       round++;
       console.log("Moving to round " + round);
       setupRound();
+    }
+  } else {
+    showEndScreen();
+    gameRunning = false;
   }
-  }
-  else{
-    showEndScreen()
-  }
-  
 }
 
 function showEndScreen() {
-  imageContainer = document.getElementById("image-container")
-  const endScreen = document.createElement("div")
-  endScreen.id = "endscreen"
-  imageContainer.appendChild(endScreen)
-  const result = document.createElement("h2")
-  result.id = "result"
-  result.innerHTML = `Az eredményed:<br> ${points}/10`
-  document.getElementById("endscreen").appendChild(result)
+  imageContainer = document.getElementById("image-container");
+  const endScreen = document.createElement("div");
+  endScreen.id = "menu";
+  imageContainer.appendChild(endScreen);
+  const result = document.createElement("h2");
+  result.id = "result";
+  result.innerHTML = `Az eredményed:<br> ${points}/10`;
+  document.getElementById("menu").appendChild(result);
+  document.getElementById("menu").innerHTML += `
+  <button id="button" onclick="goToMenu()">Vissza a menübe</button>
+`;
 }
-
-
 
 function setupRound() {
   const imageContainer = document.getElementById("image-container");
   const title = document.createElement("h2");
-  title.id = "title"
+  title.id = "title";
   const floors = ["second_floor", "first_floor", "basement"];
   const randomFloor = floors[Math.floor(Math.random() * floors.length)];
   var theRoomToFind = theRoomToFindGenerate(randomFloor);
   title.innerHTML = `Találd meg ezt a szobát:<br> ${theRoomToFind}`;
   const img = chooseImage(randomFloor);
-  img.id = "img"
+  img.id = "img";
   img.useMap = "#imageMap";
   imageContainer.appendChild(img);
   imageContainer.appendChild(title);
@@ -283,7 +284,7 @@ function theRoomToFindGenerate(chosenFloor) {
 function imageMapAreas(chosenFloor, theRoomToFind) {
   const map = document.createElement("map");
   map.name = "imageMap";
-  map.id = "map"
+  map.id = "map";
   const imageContainer = document.getElementById("image-container");
   imageContainer.appendChild(map);
 
@@ -302,10 +303,9 @@ function imageMapAreas(chosenFloor, theRoomToFind) {
       roomElement.onclick = function () {
         clickedRoom = roomData.roomName;
         console.log(clickedRoom);
-        
+
         roundEnd(clickedRoom, theRoomToFind);
-        nextRound()
-        
+        nextRound();
       };
     }
   });
@@ -320,8 +320,6 @@ function roundEnd(clickedRoom, theRoomToFind) {
     document.getElementById("img").remove();
     clickedRoom = "";
     roundEnded = true;
-    
-    
   } else {
     document.getElementById("map").remove();
     document.getElementById("title").remove();
@@ -330,6 +328,30 @@ function roundEnd(clickedRoom, theRoomToFind) {
     roundEnded = true;
   }
   return roundEnded;
+}
+
+function goToMenu() {
+  document.getElementById("menu").remove();
+  const menu = document.createElement("div");
+  menu.id = "menu";
+
+  const title = document.createElement("h1");
+  title.innerText = "Menü";
+
+  const description = document.createElement("p");
+  description.innerText =
+    'Ez a játék igénybe fogja venni a tájékozódási képességedet az "Oregon" nevű pályán. Kapni fogsz egy szobanevet és jól meg kell tippelned, hogy hol található.';
+
+  const startButton = document.createElement("button");
+  startButton.id = "button";
+  startButton.innerText = "Kezdés";
+  startButton.onclick = startGame;
+
+  menu.appendChild(title);
+  menu.appendChild(description);
+  menu.appendChild(startButton);
+
+  document.getElementById("content").appendChild(menu);
 }
 
 /* <area target="" alt="Freezer" title="Freezer" href="" coords="300,375,443,373,442,231,406,230,408,318,297,317" shape="poly">
