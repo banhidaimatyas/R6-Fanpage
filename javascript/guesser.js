@@ -225,17 +225,13 @@ function nextRound() {
 }
 
 function showEndScreen() {
-  imageContainer = document.getElementById("image-container");
-  const endScreen = document.createElement("div");
-  endScreen.id = "menu";
+  const imageContainer = document.getElementById("image-container");
+  const endScreen = createElement("div", { id: "menu" });
+  const result = createElement("h2", { id: "result", innerHTML: `Az eredményed:<br> ${points}/10` });
+  const button = createElement("button", { id: "button", innerText: "Vissza a menübe", onclick: goToMenu });
+
+  endScreen.append(result, button);
   imageContainer.appendChild(endScreen);
-  const result = document.createElement("h2");
-  result.id = "result";
-  result.innerHTML = `Az eredményed:<br> ${points}/10`;
-  document.getElementById("menu").appendChild(result);
-  document.getElementById("menu").innerHTML += `
-  <button id="button" onclick="goToMenu()">Vissza a menübe</button>
-`;
 }
 
 function setupRound() {
@@ -360,6 +356,13 @@ function goToMenu() {
   menu.appendChild(startButton);
 
   document.getElementById("content").appendChild(menu);
+}
+
+// instead of document.createElement()
+function createElement(tag, properties = {}) {
+  const element = document.createElement(tag);
+  Object.assign(element, properties);
+  return element;
 }
 
 /* <area target="" alt="Freezer" title="Freezer" href="" coords="300,375,443,373,442,231,406,230,408,318,297,317" shape="poly">
