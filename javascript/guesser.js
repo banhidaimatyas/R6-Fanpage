@@ -188,26 +188,34 @@ const Oregon = {
   },
 };
 
-var points = 0;
+let points = 0;
 let round = 1;
 let gameRunning = false;
 
 function startGame() {
-  document.getElementById("menu").remove();
-  points = 0;
-  round = 0;
+  removeMenu()
+  resetGame()
   if (!gameRunning) {
     gameRunning = true;
-    console.log("Game started! Round: " + round);
+    console.log("Start");
     setupRound();
   }
+}
+
+function resetGame() {
+  points = 0;
+  round = 0;
+}
+
+function removeMenu() {
+  document.getElementById("menu").remove();
 }
 
 function nextRound() {
   if (round <= 9) {
     if (gameRunning) {
       round++;
-      console.log("Moving to round " + round);
+      console.log(`Moving to round ${round}`);
       setupRound();
     }
   } else {
