@@ -193,8 +193,8 @@ let round = 1;
 let gameRunning = false;
 
 function startGame() {
-  removeMenu()
-  resetGame()
+  removeMenu();
+  resetGame();
   if (!gameRunning) {
     gameRunning = true;
     console.log("Start");
@@ -227,8 +227,15 @@ function nextRound() {
 function showEndScreen() {
   const imageContainer = document.getElementById("image-container");
   const endScreen = createElement("div", { id: "menu" });
-  const result = createElement("h2", { id: "result", innerHTML: `Az eredményed:<br> ${points}/10` });
-  const button = createElement("button", { id: "button", innerText: "Vissza a menübe", onclick: goToMenu });
+  const result = createElement("h2", {
+    id: "result",
+    innerHTML: `Az eredményed:<br> ${points}/10`,
+  });
+  const button = createElement("button", {
+    id: "button",
+    innerText: "Vissza a menübe",
+    onclick: goToMenu,
+  });
 
   endScreen.append(result, button);
   imageContainer.appendChild(endScreen);
@@ -238,7 +245,10 @@ function setupRound() {
   const imageContainer = document.getElementById("image-container");
   const randomFloor = getRandomFloor();
   const theRoomToFind = getRoomToFind(randomFloor);
-  const title = createElement("h2", { id: "title", innerHTML: `Találd meg ezt a szobát:<br> ${theRoomToFind}` });
+  const title = createElement("h2", {
+    id: "title",
+    innerHTML: `Találd meg ezt a szobát:<br> ${theRoomToFind}`,
+  });
   const img = createImage(randomFloor);
 
   imageContainer.append(img, title);
@@ -257,8 +267,10 @@ function getFloorIndex(floor) {
 function createImage(floor) {
   return createElement("img", {
     id: "img",
-    src: `../Images/Oregon_blueprints/r6-maps-oregon-blueprint-${getFloorIndex(floor) + 1}.jpg`,
-    useMap: "#imageMap"
+    src: `../Images/Oregon_blueprints/r6-maps-oregon-blueprint-${
+      getFloorIndex(floor) + 1
+    }.jpg`,
+    useMap: "#imageMap",
   });
 }
 
@@ -271,16 +283,18 @@ function setupImageMap(floor, targetRoom) {
   const map = createElement("map", { name: "imageMap", id: "map" });
   document.getElementById("image-container").appendChild(map);
 
-  Object.values(Oregon.levels[getFloorIndex(floor)].rooms).forEach(roomData => {
-    const area = createElement("area", {
-      shape: "poly",
-      coords: roomData.coordinates,
-      id: roomData.roomName,
-      onclick: () => handleRoomClick(roomData.roomName, targetRoom)
-    });
+  Object.values(Oregon.levels[getFloorIndex(floor)].rooms).forEach(
+    (roomData) => {
+      const area = createElement("area", {
+        shape: "poly",
+        coords: roomData.coordinates,
+        id: roomData.roomName,
+        onclick: () => handleRoomClick(roomData.roomName, targetRoom),
+      });
 
-    map.appendChild(area);
-  });
+      map.appendChild(area);
+    }
+  );
 }
 
 function handleRoomClick(clickedRoom, targetRoom) {
@@ -291,7 +305,7 @@ function handleRoomClick(clickedRoom, targetRoom) {
 }
 
 function cleanUpRound() {
-  ["map", "title", "img"].forEach(id => document.getElementById(id).remove());
+  ["map", "title", "img"].forEach((id) => document.getElementById(id).remove());
 }
 
 function goToMenu() {
@@ -299,9 +313,14 @@ function goToMenu() {
   const menu = createElement("div", { id: "menu" });
   const title = createElement("h1", { innerText: "Menü" });
   const description = createElement("p", {
-    innerText: 'Ez a játék igénybe fogja venni a tájékozódási képességedet az "Oregon" nevű pályán. Kapni fogsz egy szobanevet és jól meg kell tippelned, hogy hol található.'
+    innerText:
+      'Ez a játék igénybe fogja venni a tájékozódási képességedet az "Oregon" nevű pályán. Kapni fogsz egy szobanevet és jól meg kell tippelned, hogy hol található.',
   });
-  const startButton = createElement("button", { id: "button", innerText: "Kezdés", onclick: startGame });
+  const startButton = createElement("button", {
+    id: "button",
+    innerText: "Kezdés",
+    onclick: startGame,
+  });
 
   menu.append(title, description, startButton);
   document.getElementById("content").appendChild(menu);
