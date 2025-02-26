@@ -236,125 +236,74 @@ function showEndScreen() {
 
 function setupRound() {
   const imageContainer = document.getElementById("image-container");
-  const title = document.createElement("h2");
-  title.id = "title";
+  const randomFloor = getRandomFloor();
+  const theRoomToFind = getRoomToFind(randomFloor);
+  const title = createElement("h2", { id: "title", innerHTML: `Találd meg ezt a szobát:<br> ${theRoomToFind}` });
+  const img = createImage(randomFloor);
+
+  imageContainer.append(img, title);
+  setupImageMap(randomFloor, theRoomToFind);
+}
+
+function getRandomFloor() {
   const floors = ["second_floor", "first_floor", "basement"];
-  const randomFloor = floors[Math.floor(Math.random() * floors.length)];
-  var theRoomToFind = theRoomToFindGenerate(randomFloor);
-  title.innerHTML = `Találd meg ezt a szobát:<br> ${theRoomToFind}`;
-  const img = chooseImage(randomFloor);
-  img.id = "img";
-  img.useMap = "#imageMap";
-  imageContainer.appendChild(img);
-  imageContainer.appendChild(title);
-  imageMapAreas(randomFloor, theRoomToFind);
-}
-function chosenFloorIndex(chosenFloor) {
-  switch (chosenFloor) {
-    case "basement":
-      var index = 0;
-      break;
-    case "first_floor":
-      var index = 1;
-      break;
-    case "second_floor":
-      var index = 2;
-      break;
-
-    default:
-      break;
-  }
-  return index;
+  return floors[Math.floor(Math.random() * floors.length)];
 }
 
-function chooseImage(chosenFloor) {
-  var img = document.createElement("img");
-  img.src = `../Images/Oregon_blueprints/r6-maps-oregon-blueprint-${
-    chosenFloorIndex(chosenFloor) + 1
-  }.jpg`;
-  return img;
+function getFloorIndex(floor) {
+  return ["basement", "first_floor", "second_floor"].indexOf(floor);
 }
 
-function theRoomToFindGenerate(chosenFloor) {
-  var list = [];
-  var rooms = Oregon.levels[chosenFloorIndex(chosenFloor)].rooms;
-  Object.entries(rooms).forEach(([roomId, roomData]) => {
-    list.push(roomData.roomName);
+function createImage(floor) {
+  return createElement("img", {
+    id: "img",
+    src: `../Images/Oregon_blueprints/r6-maps-oregon-blueprint-${getFloorIndex(floor) + 1}.jpg`,
+    useMap: "#imageMap"
   });
-  var room = list[Math.floor(Math.random() * list.length)];
-  return room;
 }
 
-function imageMapAreas(chosenFloor, theRoomToFind) {
-  const map = document.createElement("map");
-  map.name = "imageMap";
-  map.id = "map";
-  const imageContainer = document.getElementById("image-container");
-  imageContainer.appendChild(map);
+function getRoomToFind(floor) {
+  const rooms = Object.values(Oregon.levels[getFloorIndex(floor)].rooms);
+  return rooms[Math.floor(Math.random() * rooms.length)].roomName;
+}
 
-  var rooms = Oregon.levels[chosenFloorIndex(chosenFloor)].rooms;
-  Object.entries(rooms).forEach(([roomId, roomData]) => {
-    // mapareas
-    const area = document.createElement("area");
-    area.shape = "poly";
-    area.coords = roomData.coordinates;
-    area.id = roomData.roomName;
+function setupImageMap(floor, targetRoom) {
+  const map = createElement("map", { name: "imageMap", id: "map" });
+  document.getElementById("image-container").appendChild(map);
+
+  Object.values(Oregon.levels[getFloorIndex(floor)].rooms).forEach(roomData => {
+    const area = createElement("area", {
+      shape: "poly",
+      coords: roomData.coordinates,
+      id: roomData.roomName,
+      onclick: () => handleRoomClick(roomData.roomName, targetRoom)
+    });
+
     map.appendChild(area);
-    const roomElement = document.getElementById(roomData.roomName);
-    // onclick
-    var clickedRoom = "";
-    if (roomElement) {
-      roomElement.onclick = function () {
-        clickedRoom = roomData.roomName;
-        console.log(clickedRoom);
-
-        roundEnd(clickedRoom, theRoomToFind);
-        nextRound();
-      };
-    }
   });
 }
 
-function roundEnd(clickedRoom, theRoomToFind) {
-  var roundEnded = false;
-  if (clickedRoom === theRoomToFind) {
-    points += 1;
-    document.getElementById("map").remove();
-    document.getElementById("title").remove();
-    document.getElementById("img").remove();
-    clickedRoom = "";
-    roundEnded = true;
-  } else {
-    document.getElementById("map").remove();
-    document.getElementById("title").remove();
-    document.getElementById("img").remove();
-    clickedRoom = "";
-    roundEnded = true;
-  }
-  return roundEnded;
+function handleRoomClick(clickedRoom, targetRoom) {
+  console.log(clickedRoom);
+  if (clickedRoom === targetRoom) points++;
+  cleanUpRound();
+  nextRound();
+}
+
+function cleanUpRound() {
+  ["map", "title", "img"].forEach(id => document.getElementById(id).remove());
 }
 
 function goToMenu() {
-  document.getElementById("menu").remove();
-  const menu = document.createElement("div");
-  menu.id = "menu";
+  removeMenu();
+  const menu = createElement("div", { id: "menu" });
+  const title = createElement("h1", { innerText: "Menü" });
+  const description = createElement("p", {
+    innerText: 'Ez a játék igénybe fogja venni a tájékozódási képességedet az "Oregon" nevű pályán. Kapni fogsz egy szobanevet és jól meg kell tippelned, hogy hol található.'
+  });
+  const startButton = createElement("button", { id: "button", innerText: "Kezdés", onclick: startGame });
 
-  const title = document.createElement("h1");
-  title.innerText = "Menü";
-
-  const description = document.createElement("p");
-  description.innerText =
-    'Ez a játék igénybe fogja venni a tájékozódási képességedet az "Oregon" nevű pályán. Kapni fogsz egy szobanevet és jól meg kell tippelned, hogy hol található.';
-
-  const startButton = document.createElement("button");
-  startButton.id = "button";
-  startButton.innerText = "Kezdés";
-  startButton.onclick = startGame;
-
-  menu.appendChild(title);
-  menu.appendChild(description);
-  menu.appendChild(startButton);
-
+  menu.append(title, description, startButton);
   document.getElementById("content").appendChild(menu);
 }
 
