@@ -1,6 +1,5 @@
 # JS-projekt
-## Fanoldal a következő menüpontokkal: Operátorok, Esport, Szezonok, Rólunk, Kvíz, Találd Meg, Játékbemutató, “Ismerd meg Oregont”.
-## Célok:
+## Fanoldal a következő menüpontokkal: Operátorok, Rólunk, Kvíz, Guesser játék, Játékbemutató.
 * Játék ismertetése
 * Élvezhető játék készítése
 * JS, HTML, CSS használata
