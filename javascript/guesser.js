@@ -188,6 +188,146 @@ const Oregon = {
   },
 };
 
+const Border = {
+  levels: {
+    1: {
+      rooms: {
+        1: {
+          coordinates: "149,350,147,206,231,205,232,351",
+          roomName: "Supply",
+        },
+        2: {
+          coordinates: "275,205,275,53,393,53,395,119,354,162,354,204",
+          roomName: "Servers",
+        },
+        3: {
+          coordinates: "145,455,146,392,231,392,231,456",
+          roomName: "Jail",
+        },
+        4: {
+          coordinates: "415,337,416,457,496,457,496,336",
+          roomName: "Pass",
+        },
+        5: {
+          coordinates:
+            "232,454,234,271,275,271,274,332,331,334,359,303,358,271,396,272,413,288,413,454",
+          roomName: "Customs",
+        },
+        6: {
+          coordinates: "147,353,230,351,230,389,147,390",
+          roomName: "Jcon",
+        },
+        7: {
+          coordinates: "234,271,233,208,356,208,357,271",
+          roomName: "Main Stairs",
+        },
+        8: {
+          coordinates: "496,458,496,334,536,294,624,295,625,456",
+          roomName: "Waiting Room",
+        },
+        9: {
+          coordinates: "625,293,660,293,660,287,698,288,699,456,627,454",
+          roomName: "East Stairs",
+        },
+        10: {
+          coordinates:
+            "357,215,493,217,494,172,535,172,535,291,495,333,415,333,415,287,394,271,359,270",
+          roomName: "Lobby",
+        },
+        11: {
+          coordinates: "496,54,658,52,659,172,493,171",
+          roomName: "Bathroom",
+        },
+        12: {
+          coordinates: "536,174,659,174,658,294,537,291",
+          roomName: "Tellers",
+        },
+        13: {
+          coordinates: "396,55,492,56,491,212,358,211,357,162,397,121",
+          roomName: "Workshop",
+        },
+        14: {
+          coordinates: "276,331,276,272,357,272,355,305,331,331",
+          roomName: "Admin",
+        },
+        15: {
+          coordinates: "182,55,273,55,274,163,182,164",
+          roomName: "Vent",
+        },
+        16: {
+          coordinates: "182,166,273,164,274,205,182,204",
+          roomName: "Front Con",
+        },
+      },
+    },
+    2: {
+      rooms: {
+        1: {
+          coordinates: "508,422,599,421,599,373,641,373,640,455,507,456",
+          roomName: "Catwalk",
+        },
+        2: {
+          coordinates: "367,455,366,270,193,270,191,455",
+          roomName: "CC",
+        },
+        3: {
+          coordinates: "193,201,190,48,282,47,284,206",
+          roomName: "Armory",
+        },
+        4: {
+          coordinates: "284,47,410,45,412,165,364,166,364,146,284,145",
+          roomName: "Africa",
+        },
+        5: {
+          coordinates: "367,333,506,331,506,456,368,454",
+          roomName: "Break Room",
+        },
+        6: {
+          coordinates: "640,291,710,290,711,456,676,456,675,418,644,418",
+          roomName: "East Stairs",
+        },
+        7: {
+          coordinates: "367,202,411,200,410,291,506,290,506,331,368,331",
+          roomName: "90",
+        },
+        8: {
+          coordinates: "414,165,507,165,510,289,412,291",
+          roomName: "Fountain",
+        },
+        9: {
+          coordinates:
+            "511,281,553,282,551,293,637,293,637,334,509,334,507,294",
+          roomName: "Office Hall",
+        },
+        10: {
+          coordinates: "Archives",
+          roomName: "411,5,515,6,516,50,506,51,508,82,566,83,567,126,547,162,412,161,412,46",
+        },
+        11: {
+          coordinates: "Mini",
+          roomName: "286,145,362,146,364,202,287,202",
+        },
+        12: {
+          coordinates: "287,203,364,204,366,267,286,265",
+          roomName: "Main Stairs",
+        },
+        13: {
+          coordinates: "365,168,411,165,412,198,366,198",
+          roomName: "Beepers",
+        },
+        14: {
+          coordinates: "567,84,641,84,640,290,553,287,552,279,510,280,510,164,549,163,568,132",
+          roomName: "Office",
+        },
+        15: {
+          coordinates: "642,205,677,205,677,287,643,287",
+          roomName: "Office Wall",
+        },
+      },
+    },
+  },
+};
+
 let points = 0;
 let round = 1;
 let gameRunning = false;
