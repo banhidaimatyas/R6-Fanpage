@@ -69,3 +69,23 @@ body{
 .carousel-inner{
     height: 60vh;
 }
+
+@media only screen and (max-width: 994px) {
+    #game{
+        padding: 22px 20px;
+    }
+
+    #game h1{
+        font-size: 35px;
+        border-bottom: red solid 3px;
+        width: 250px;
+    }
+    
+    #description{
+        font-size: 15px;
+    }
+
+    .carousel-inner{
+        height: 40vh;
+    }
+}
