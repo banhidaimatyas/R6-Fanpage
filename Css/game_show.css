@@ -1,0 +1,18 @@
+@font-face {
+	font-family: regular;
+	src: url(../Fonts/Roboto_SemiCondensed-Regular.ttf);
+}
+
+*{
+    font-family: regular;
+}
+
+#game_description{
+    color: red;
+    justify-content: center;
+    text-align: center;
+}
+
+.carousel-image{
+    height: 60vh;
+}
