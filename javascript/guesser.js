@@ -300,12 +300,13 @@ const Border = {
           roomName: "Office Hall",
         },
         10: {
-          coordinates: "Archives",
-          roomName: "411,5,515,6,516,50,506,51,508,82,566,83,567,126,547,162,412,161,412,46",
+          coordinates: "411,5,515,6,516,50,506,51,508,82,566,83,567,126,547,162,412,161,412,46",
+          roomName:
+            "Archives",
         },
         11: {
-          coordinates: "Mini",
-          roomName: "286,145,362,146,364,202,287,202",
+          coordinates: "286,145,362,146,364,202,287,202",
+          roomName: "Mini",
         },
         12: {
           coordinates: "287,203,364,204,366,267,286,265",
@@ -316,7 +317,8 @@ const Border = {
           roomName: "Beepers",
         },
         14: {
-          coordinates: "567,84,641,84,640,290,553,287,552,279,510,280,510,164,549,163,568,132",
+          coordinates:
+            "567,84,641,84,640,290,553,287,552,279,510,280,510,164,549,163,568,132",
           roomName: "Office",
         },
         15: {
@@ -339,7 +341,7 @@ function startGame() {
     gameRunning = true;
     console.log("Start");
     setupRound();
-    highlightMap()
+    highlightMap();
   }
 }
 
@@ -382,43 +384,87 @@ function showEndScreen() {
   imageContainer.appendChild(endScreen);
 }
 
+function mapChoosing() {
+  return "Border";
+}
+
 function setupRound() {
+  let chosenMap = mapChoosing();
   const imageContainer = document.getElementById("image-container");
-  const randomFloor = getRandomFloor();
-  const theRoomToFind = getRoomToFind(randomFloor);
+  const randomFloor = getRandomFloor(chosenMap);
+  const theRoomToFind = getRoomToFind(randomFloor, chosenMap);
   const title = createElement("h2", {
     id: "title",
     innerHTML: `Találd meg ezt a szobát:<br> ${theRoomToFind}`,
   });
-  const img = createImage(randomFloor);
+  const img = createImage(randomFloor, chosenMap);
 
   imageContainer.append(img, title);
   setupImageMap(randomFloor, theRoomToFind);
 }
 
-function getRandomFloor() {
-  const floors = ["second_floor", "first_floor", "basement"];
+function getRandomFloor(map) {
+  // floors of each building
+  const floors_of_maps = {
+    Oregon: ["second_floor", "first_floor", "basement"], // oregon floors
+    Border: ["first_floor", "second_floor"], // border
+  };
+
+  const floors = floors_of_maps[map];
   return floors[Math.floor(Math.random() * floors.length)];
 }
 
-function getFloorIndex(floor) {
-  return ["basement", "first_floor", "second_floor"].indexOf(floor);
+function getRoomToFind(floor, chosenMap) {
+  const levels = {
+    Oregon: Oregon.levels, // oregon levels
+    Border: Border.levels, // border levels
+  };
+
+  const rooms = Object.values(levels[chosenMap][getFloorIndex(floor)].rooms);
+  return rooms[Math.floor(Math.random() * rooms.length)].roomName;
 }
 
-function createImage(floor) {
-  const img = createElement("img", {
-    id: "img",
-    src: `../Images/Oregon_blueprints/r6-maps-oregon-blueprint-${getFloorIndex(floor) + 1}.jpg`,
-    useMap: "#image-map",
-  });
+function getFloorIndex(floor) {
 
-  img.setAttribute("class", "map"); // Explicitly setting the class attribute
+  switch (floor) {
+    case "basement":
+      return 0;
+      break;
+    case "first_floor":
+      return 1;
+      break;
+    case "second_floor":
+      return 2;
+      break;
 
-  return img;}
+    default:
+      break;
+  }
+}
 
-function getRoomToFind(floor) {
-  const rooms = Object.values(Oregon.levels[getFloorIndex(floor)].rooms);
-  return rooms[Math.floor(Math.random() * rooms.length)].roomName;
+function createImage(floor, chosenMap) {
+  if (chosenMap === "Oregon") {
+    const img = createElement("img", {
+      id: "img",
+      src: `../Images/Oregon_blueprints/r6-maps-oregon-blueprint-${
+        getFloorIndex(floor)
+      }.jpg`,
+      useMap: "#image-map",
+    });
+    img.setAttribute("class", "map"); // Explicitly setting the class attribute
+    return img;
+  }
+  if (chosenMap === "Border") {
+    const img = createElement("img", {
+      id: "img",
+      src: `../Images/Border_blueprints/r6-maps-border-blueprint-${
+        getFloorIndex(floor)
+      }.jpg`,
+      useMap: "#image-map",
+    });
+    img.setAttribute("class", "map"); // Explicitly setting the class attribute
+    return img;
+  }
 }
 
 function setupImageMap(floor, targetRoom) {
@@ -434,7 +480,7 @@ function setupImageMap(floor, targetRoom) {
         onclick: () => {
           handleRoomClick(roomData.roomName, targetRoom);
           highlightMap();
-      }
+        },
       });
 
       map.appendChild(area);
@@ -451,7 +497,7 @@ function handleRoomClick(clickedRoom, targetRoom) {
 
 function cleanUpRound() {
   ["map", "title", "img"].forEach((id) => document.getElementById(id).remove());
-  document.querySelectorAll('.map').forEach(element => element.remove());
+  document.querySelectorAll(".map").forEach((element) => element.remove());
 }
 
 function goToMenu() {
@@ -466,7 +512,6 @@ function goToMenu() {
     id: "button",
     innerText: "Kezdés",
     onclick: startGame,
-    
   });
 
   menu.append(title, description, startButton);
