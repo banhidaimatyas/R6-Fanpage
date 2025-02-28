@@ -330,6 +330,187 @@ const Border = {
   },
 };
 
+const Chalet = {
+  levels: {
+    0: {
+      rooms: {
+        1: {
+          coordinates: "391,143,390,14,472,15,473,70,483,71,483,145",
+          roomName: "Main Garage",
+        },
+        2: {
+          coordinates: "242,332,245,288,284,287,285,305,285,332",
+          roomName: "Blue Stairs",
+        },
+        3: {
+          coordinates: "287,307,373,305,374,246,401,248,400,336,331,337,331,351,287,351,287,334",
+          roomName: "Blue",
+        },
+        4: {
+          coordinates: "331,473,331,427,355,427,355,449,387,449,388,472",
+          roomName: "Lobby Stairs",
+        },
+        5: {
+          coordinates: "419,449,419,381,462,379,463,448",
+          roomName: "Connector",
+        },
+        6: {
+          coordinates: "333,338,399,338,401,380,418,381,419,472,389,470,389,449,355,448,355,427,331,426",
+          roomName: "Garage",
+        },
+        7: {
+          coordinates: "402,248,504,249,504,374,463,373,464,379,403,377",
+          roomName: "Wine",
+        },
+        8: {
+          coordinates: "389,171,414,171,414,221,414,245,388,245",
+          roomName: "Main Stairs",
+        },
+        9: {
+          coordinates: "431,145,466,145,467,221,431,221",
+          roomName: "Garage Hall",
+        },
+        10: {
+          coordinates: "415,222,529,221,530,247,415,246",
+          roomName: "Main Hall",
+        },
+        11: {
+          coordinates: "506,248,529,248,530,334,507,334",
+          roomName: "Stock Hall",
+        },
+        12: {
+          coordinates: "473,14,507,14,507,70,474,69",
+          roomName: "Big Entry",
+        },
+      },
+    },
+    1: {
+      rooms: {
+        1: {
+          coordinates: "403,69,421,68,421,61,456,61,456,38,403,38",
+          roomName: "Solar Stairs",
+        },
+        2: {
+          coordinates: "457,39,508,38,508,111,469,112,469,83,441,83,439,111,403,110,403,70,421,69,421,62,458,63",
+          roomName: "Trophy Room",
+        },
+        3: {
+          coordinates: "264,461,263,437,345,437,345,461",
+          roomName: "Bar Stock",
+        },
+        4: {
+          coordinates: "346,438,402,436,401,461,346,460",
+          roomName: "Sub",
+        },
+        5: {
+          coordinates: "403,437,467,435,467,462,402,462",
+          roomName: "Fireplace Stairs",
+        },
+        6: {
+          coordinates: "401,319,408,320,429,299,429,289,467,289,467,435,401,435",
+          roomName: "Fireplace",
+        },
+        7: {
+          coordinates: "329,331,340,320,399,319,400,433,329,434",
+          roomName: "Bar",
+        },
+        8: {
+          coordinates: "264,331,305,331,305,365,328,366,328,435,262,434",
+          roomName: "Games",
+        },
+        9: {
+          coordinates: "263,290,313,292,313,314,305,314,305,330,263,329",
+          roomName: "Blue Stairs",
+        },
+        10: {
+          coordinates: "305,363,306,314,313,314,314,291,401,290,401,230,429,229,428,287,427,298,408,316,400,318,341,317,328,331,328,363",
+          roomName: "Hall",
+        },
+        11: {
+          coordinates: "421,180,469,179,470,213,507,215,506,290,429,287,431,228,423,227",
+          roomName: "Dining",
+        },
+        12: {
+          coordinates: "469,113,511,111,529,132,529,212,471,211",
+          roomName: "Kitchen",
+        },
+        13: {
+          coordinates: "271,259,338,258,339,289,271,289",
+          roomName: "Mud",
+        },
+        14: {
+          coordinates: "401,199,421,199,421,227,401,228",
+          roomName: "Main Stairs",
+        },
+        15: {
+          coordinates: "441,84,468,83,468,177,440,176",
+          roomName: "Split",
+        },
+        16: {
+          coordinates: "376,113,439,113,439,177,421,178,421,197,399,197,400,214,377,213",
+          roomName: "Main",
+        },
+      },
+    },
+    2: {
+      rooms: {
+        1: {
+          coordinates: "365,120,424,120,423,191,365,190",
+          roomName: "Bath",
+        },
+        2: {
+          coordinates: "366,225,414,227,413,298,365,300",
+          roomName: "Piano",
+        },
+        3: {
+          coordinates: "365,190,451,190,451,222,414,222,414,226,365,225",
+          roomName: "Reading",
+        },
+        4: {
+          coordinates: "254,298,301,298,302,340,254,340",
+          roomName: "Blue Stairs",
+        },
+        5: {
+          coordinates: "302,299,413,300,414,339,303,340",
+          roomName: "Blue Hall",
+        },
+        6: {
+          coordinates: "415,223,489,223,490,300,453,301,452,339,415,340",
+          roomName: "Office",
+        },
+        7: {
+          coordinates: "425,120,511,120,511,222,452,221,451,158,425,158",
+          roomName: "Master",
+        },
+        8: {
+          coordinates: "425,158,450,159,449,188,425,188",
+          roomName: "Closet",
+        },
+        9: {
+          coordinates: "388,48,439,48,440,73,409,73,407,93,388,94",
+          roomName: "Solar Stairs",
+        },
+        10: {
+          coordinates: "439,49,490,50,491,118,387,118,388,94,431,94,431,74,441,74",
+          roomName: "Solar",
+        },
+        11: {
+          coordinates: "347,341,451,341,451,373,381,374,380,404,386,404,387,469,346,469",
+          roomName: "Fireplace",
+        },
+        12: {
+          coordinates: "302,341,345,341,345,377,303,375",
+          roomName: "Access",
+        },
+        13: {
+          coordinates: "254,343,301,342,302,376,343,377,345,445,254,442",
+          roomName: "Library",
+        },
+      },
+    },
+  },
+};
+
 let points = 0;
 let round = 1;
 let gameRunning = false;
@@ -385,10 +566,6 @@ function showEndScreen() {
   imageContainer.appendChild(endScreen);
 }
 
-function mapChoosing() {
-  return "Oregon";
-}
-
 function setupRound(chosenMap) {
   const imageContainer = document.getElementById("image-container");
   const randomFloor = getRandomFloor(chosenMap);
@@ -408,6 +585,8 @@ function getRandomFloor(map) {
   const floors_of_maps = {
     Oregon: ["second_floor", "first_floor", "basement"], // oregon floors
     Border: ["first_floor", "second_floor"], // border
+    Kafe: ["first_floor", "second_floor", "third_floor"],
+    Chalet: ["second_floor", "first_floor", "basement"],
   };
 
   const floors = floors_of_maps[map];
@@ -418,6 +597,8 @@ function getRoomToFind(floor, chosenMap) {
   const levels = {
     Oregon: Oregon.levels, // oregon levels
     Border: Border.levels, // border levels
+    Kafe: Oregon.levels,
+    Chalet: Chalet.levels,
   };
 
   const rooms = Object.values(levels[chosenMap][getFloorIndex(floor)].rooms);
@@ -433,6 +614,8 @@ function getFloorIndex(floor) {
       return 1;
     case "second_floor":
       return 2;
+    case "third_floor":
+      return 3;
     default:
       break;
   }
@@ -461,6 +644,28 @@ function createImage(floor, chosenMap) {
     img.setAttribute("class", "map"); // Explicitly setting the class attribute
     return img;
   }
+  if (chosenMap === "Kafe") {
+    const img = createElement("img", {
+      id: "img",
+      src: `..${
+        getFloorIndex(floor)
+      }.jpg`,
+      useMap: "#image-map",
+    });
+    img.setAttribute("class", "map"); // Explicitly setting the class attribute
+    return img;
+  }
+  if (chosenMap === "Chalet") {
+    const img = createElement("img", {
+      id: "img",
+      src: `../Images/Chalet_blueprints/r6-maps-chalet-blueprint-${
+        getFloorIndex(floor)
+      }.jpg`,
+      useMap: "#image-map",
+    });
+    img.setAttribute("class", "map"); // Explicitly setting the class attribute
+    return img;
+  }
 }
 
 function setupImageMap(floor, targetRoom, chosenMap) {
@@ -469,6 +674,8 @@ function setupImageMap(floor, targetRoom, chosenMap) {
   const levels = {
     Oregon: Oregon.levels, // oregon levels
     Border: Border.levels, // border levels
+    Kafe: Kafe.levels, 
+    Chalet: Chalet.levels, 
   };
 
   Object.values(levels[chosenMap][getFloorIndex(floor)].rooms).forEach(
@@ -545,3 +752,4 @@ function createElement(tag, properties = {}) {
   Object.assign(element, properties);
   return element;
 }
+
