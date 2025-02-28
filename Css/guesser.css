@@ -46,6 +46,15 @@
     border: 2px solid black;
 
 }
+#image-container .map {
+    border-radius: 5px;
+    border: 2px solid black;
+
+}
+#map:hover {
+    cursor: pointer;
+
+}
 
 #image-container h2 {
     border-bottom-right-radius: 5px;
@@ -78,6 +87,27 @@
     color: black;
 }
 
+.button {
+
+    background-color: #b6b6b6;
+    /* Green */
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    font-family: navFont;
+    border-radius: 5px;
+    border: 2px solid black;
+    width: 240px;
+    height: 80px;
+
+
+}
+
 #button {
 
     background-color: #b6b6b6;
@@ -93,11 +123,18 @@
     font-family: navFont;
     border-radius: 5px;
     border: 2px solid black;
+    width: 240px;
+    height: 80px;
 
 
 }
 
 #button:hover{
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.button:hover{
     background-color: #ffffff;
     cursor: pointer;
 }
@@ -111,3 +148,28 @@ h1{
     font-size: 50px;
 }
 
+#button-grid{
+    display: grid;
+    flex-direction: column;
+    align-items: center;
+    grid-template-columns: auto auto;
+    gap: 10px;
+}
+#points{
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background-color: black;
+    color: white;
+    width: 50px;
+    font-family: regular;
+    ;
+    padding: 8px 30px;
+    font-size: 15px;
+    font-weight: 600;
+    
+    
+}
+#points p{
+    width: auto
+    
+}
