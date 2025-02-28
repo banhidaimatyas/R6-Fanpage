@@ -334,13 +334,14 @@ let points = 0;
 let round = 1;
 let gameRunning = false;
 
-function startGame() {
+
+function startGame(chosenMap) {
   removeMenu();
   resetGame();
   if (!gameRunning) {
     gameRunning = true;
     console.log("Start");
-    setupRound();
+    setupRound(chosenMap);
     highlightMap();
   }
 }
@@ -354,12 +355,12 @@ function removeMenu() {
   document.getElementById("menu").remove();
 }
 
-function nextRound() {
+function nextRound(chosenMap) {
   if (round <= 9) {
     if (gameRunning) {
       round++;
       console.log(`Moving to round ${round}`);
-      setupRound();
+      setupRound(chosenMap);
     }
   } else {
     showEndScreen();
@@ -388,8 +389,7 @@ function mapChoosing() {
   return "Oregon";
 }
 
-function setupRound() {
-  let chosenMap = mapChoosing();
+function setupRound(chosenMap) {
   const imageContainer = document.getElementById("image-container");
   const randomFloor = getRandomFloor(chosenMap);
   const theRoomToFind = getRoomToFind(randomFloor, chosenMap);
@@ -429,14 +429,10 @@ function getFloorIndex(floor) {
   switch (floor) {
     case "basement":
       return 0;
-      break;
     case "first_floor":
       return 1;
-      break;
     case "second_floor":
       return 2;
-      break;
-
     default:
       break;
   }
@@ -482,7 +478,7 @@ function setupImageMap(floor, targetRoom, chosenMap) {
         coords: roomData.coordinates,
         id: roomData.roomName,
         onclick: () => {
-          handleRoomClick(roomData.roomName, targetRoom);
+          handleRoomClick(roomData.roomName, targetRoom, chosenMap);
           highlightMap();
         },
       });
@@ -492,11 +488,11 @@ function setupImageMap(floor, targetRoom, chosenMap) {
   );
 }
 
-function handleRoomClick(clickedRoom, targetRoom) {
+function handleRoomClick(clickedRoom, targetRoom, chosenMap) {
   console.log(clickedRoom);
   if (clickedRoom === targetRoom) points++;
   cleanUpRound();
-  nextRound();
+  nextRound(chosenMap);
 }
 
 function cleanUpRound() {
@@ -510,15 +506,36 @@ function goToMenu() {
   const title = createElement("h1", { innerText: "Menü" });
   const description = createElement("p", {
     innerText:
-      'Ez a játék igénybe fogja venni a tájékozódási képességedet az "Oregon" nevű pályán. Kapni fogsz egy szobanevet és jól meg kell tippelned, hogy hol található.',
+      'Ez a játék igénybe fogja venni a tájékozódási képességedet. 4 féle pálya közül választhatsz:',
   });
-  const startButton = createElement("button", {
-    id: "button",
-    innerText: "Kezdés",
-    onclick: startGame,
+  const buttonContainer = createElement("div", {id: "button-grid"});
+  const borderButton = createElement("button", {
+    innerText: "Border",
+    onclick: () => {
+      startGame("Border");}
   });
+  borderButton.setAttribute("class", "button")
+  const oregonButton = createElement("button", {
 
-  menu.append(title, description, startButton);
+    innerText: "Oregon",
+    onclick: () => {
+      startGame("Oregon");}
+  });
+  oregonButton.setAttribute("class", "button")
+  const kafeButton = createElement("button", {
+    innerText: "Kafe",
+    onclick: () => {
+      startGame("Kafe");}
+  });
+  kafeButton.setAttribute("class", "button")
+  const chaletButton = createElement("button", {
+    innerText: "Chalet",
+    onclick: () => {
+      startGame("Chalet");}
+  });
+  chaletButton.setAttribute("class", "button")
+  buttonContainer.append(borderButton, oregonButton, kafeButton, chaletButton)
+  menu.append(title, description, buttonContainer);
   document.getElementById("content").appendChild(menu);
 }
 

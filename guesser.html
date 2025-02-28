@@ -59,9 +59,14 @@
     <article id="content">
         <div id="menu">
             <h1>Menü</h1>
-            <p>Ez a játék igénybe fogja venni a tájékozódási képességedet az "Oregon" nevű pályán. Kapni fogsz egy
-                szobanevet és jól meg kell tippelned, hogy hol található.</p>
-            <button id="button" onclick="startGame()">Kezdés</button>
+            <p>Ez a játék igénybe fogja venni a tájékozódási képességedet. 4 féle pálya közül választhatsz:</p>
+                <div id="button-grid">
+                    <button class="button" onclick="startGame('Border')">Border</button>
+                    <button class="button" onclick="startGame('Oregon')">Oregon</button>
+                    <button class="button" onclick="startGame('Kafe')">Kafe</button>
+                    <button class="button" onclick="startGame('Chalet')">Chalet</button>
+                </div>
+                
         </div>
         <div id="image-container"></div>
     </article>
