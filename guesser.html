@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,23 @@
     <link rel="stylesheet" href="Css/guesser.css">
     <script src="Javascript/navbar.js"></script>
     <script src="Javascript/guesser.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/maphilight/1.4.0/jquery.maphilight.min.js"></script>
+    <script>
+        function highlightMap() {
+            $('.map').maphilight();
+        }
 
+        $(document).ready(function () {
+            // Call this function manually whenever you need the maphilight effect
+            highlightMap();
+        });
+    </script>
     <title>Guesser</title>
 
 </head>
+
 <body>
     <header>
         <nav>
@@ -36,16 +50,17 @@
                         <a href="guesser.html">Guesser</a>
                         <a href="game_show.html">Játékról</a>
                     </div>
-                </div> 
+                </div>
             </div>
         </nav>
     </header>
 
-    
+
     <article id="content">
         <div id="menu">
             <h1>Menü</h1>
-            <p>Ez a játék igénybe fogja venni a tájékozódási képességedet az "Oregon" nevű pályán. Kapni fogsz egy szobanevet és jól meg kell tippelned, hogy hol található.</p>
+            <p>Ez a játék igénybe fogja venni a tájékozódási képességedet az "Oregon" nevű pályán. Kapni fogsz egy
+                szobanevet és jól meg kell tippelned, hogy hol található.</p>
             <button id="button" onclick="startGame()">Kezdés</button>
         </div>
         <div id="image-container"></div>
@@ -59,9 +74,9 @@
             </div>
             <div class="media">
                 <ul>
-                    <li id="github"><img  src="Images/github.png" alt="github"></li>
-                    <li id="instagram"><img  src="Images/instagram.png" alt="instagram"></li>
-                    <li id="facebook"><img  src="Images/facebook.png" alt="facebook"></li>
+                    <li id="github"><img src="Images/github.png" alt="github"></li>
+                    <li id="instagram"><img src="Images/instagram.png" alt="instagram"></li>
+                    <li id="facebook"><img src="Images/facebook.png" alt="facebook"></li>
                 </ul>
             </div>
             <div id="aboutus" class="text">
@@ -71,4 +86,5 @@
         <script src="Javascript/footer.js"></script>
     </footer>
 </body>
+
 </html>

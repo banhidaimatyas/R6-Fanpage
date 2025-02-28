@@ -46,6 +46,15 @@
     border: 2px solid black;
 
 }
+#image-container .map {
+    border-radius: 5px;
+    border: 2px solid black;
+
+}
+#map:hover {
+    cursor: pointer;
+
+}
 
 #image-container h2 {
     border-bottom-right-radius: 5px;

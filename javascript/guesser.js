@@ -339,6 +339,7 @@ function startGame() {
     gameRunning = true;
     console.log("Start");
     setupRound();
+    highlightMap()
   }
 }
 
@@ -405,14 +406,15 @@ function getFloorIndex(floor) {
 }
 
 function createImage(floor) {
-  return createElement("img", {
+  const img = createElement("img", {
     id: "img",
-    src: `../Images/Oregon_blueprints/r6-maps-oregon-blueprint-${
-      getFloorIndex(floor) + 1
-    }.jpg`,
-    useMap: "#imageMap",
+    src: `../Images/Oregon_blueprints/r6-maps-oregon-blueprint-${getFloorIndex(floor) + 1}.jpg`,
+    useMap: "#image-map",
   });
-}
+
+  img.setAttribute("class", "map"); // Explicitly setting the class attribute
+
+  return img;}
 
 function getRoomToFind(floor) {
   const rooms = Object.values(Oregon.levels[getFloorIndex(floor)].rooms);
@@ -420,7 +422,7 @@ function getRoomToFind(floor) {
 }
 
 function setupImageMap(floor, targetRoom) {
-  const map = createElement("map", { name: "imageMap", id: "map" });
+  const map = createElement("map", { name: "image-map", id: "map" });
   document.getElementById("image-container").appendChild(map);
 
   Object.values(Oregon.levels[getFloorIndex(floor)].rooms).forEach(
@@ -429,7 +431,10 @@ function setupImageMap(floor, targetRoom) {
         shape: "poly",
         coords: roomData.coordinates,
         id: roomData.roomName,
-        onclick: () => handleRoomClick(roomData.roomName, targetRoom),
+        onclick: () => {
+          handleRoomClick(roomData.roomName, targetRoom);
+          highlightMap();
+      }
       });
 
       map.appendChild(area);
@@ -446,6 +451,7 @@ function handleRoomClick(clickedRoom, targetRoom) {
 
 function cleanUpRound() {
   ["map", "title", "img"].forEach((id) => document.getElementById(id).remove());
+  document.querySelectorAll('.map').forEach(element => element.remove());
 }
 
 function goToMenu() {
@@ -460,6 +466,7 @@ function goToMenu() {
     id: "button",
     innerText: "Kezdés",
     onclick: startGame,
+    
   });
 
   menu.append(title, description, startButton);
