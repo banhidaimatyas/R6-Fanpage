@@ -400,7 +400,7 @@ function setupRound() {
   const img = createImage(randomFloor, chosenMap);
 
   imageContainer.append(img, title);
-  setupImageMap(randomFloor, theRoomToFind);
+  setupImageMap(randomFloor, theRoomToFind, chosenMap);
 }
 
 function getRandomFloor(map) {
@@ -467,11 +467,15 @@ function createImage(floor, chosenMap) {
   }
 }
 
-function setupImageMap(floor, targetRoom) {
+function setupImageMap(floor, targetRoom, chosenMap) {
   const map = createElement("map", { name: "image-map", id: "map" });
   document.getElementById("image-container").appendChild(map);
+  const levels = {
+    Oregon: Oregon.levels, // oregon levels
+    Border: Border.levels, // border levels
+  };
 
-  Object.values(Oregon.levels[getFloorIndex(floor)].rooms).forEach(
+  Object.values(levels[chosenMap][getFloorIndex(floor)].rooms).forEach(
     (roomData) => {
       const area = createElement("area", {
         shape: "poly",
