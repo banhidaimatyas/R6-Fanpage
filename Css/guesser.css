@@ -155,4 +155,21 @@ h1{
     grid-template-columns: auto auto;
     gap: 10px;
 }
-
+#points{
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background-color: black;
+    color: white;
+    width: 50px;
+    font-family: regular;
+    ;
+    padding: 8px 30px;
+    font-size: 15px;
+    font-weight: 600;
+    
+    
+}
+#points p{
+    width: auto
+    
+}
