@@ -385,7 +385,7 @@ function showEndScreen() {
 }
 
 function mapChoosing() {
-  return "Border";
+  return "Oregon";
 }
 
 function setupRound() {
@@ -447,7 +447,7 @@ function createImage(floor, chosenMap) {
     const img = createElement("img", {
       id: "img",
       src: `../Images/Oregon_blueprints/r6-maps-oregon-blueprint-${
-        getFloorIndex(floor)
+        getFloorIndex(floor) +1
       }.jpg`,
       useMap: "#image-map",
     });
