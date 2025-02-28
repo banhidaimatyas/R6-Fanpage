@@ -12,6 +12,31 @@
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/maphilight/1.4.0/jquery.maphilight.min.js"></script>
     <script>
+        // maphiglight color change
+        $.fn.maphilight.defaults = {
+            fill: true,
+            fillColor: '000000',
+            fillOpacity: 0.2,
+            stroke: true,
+            strokeColor: '0000ff',
+            strokeOpacity: 1,
+            strokeWidth: 3,
+            fade: true,
+            alwaysOn: false,
+            neverOn: false,
+            groupBy: false,
+            wrapClass: true,
+            shadow: false,
+            shadowX: 0,
+            shadowY: 0,
+            shadowRadius: 6,
+            shadowColor: '000000',
+            shadowOpacity: 0.5,
+            shadowPosition: 'outside',
+            shadowFrom: false
+        }
+
+
         function highlightMap() {
             $('.map').maphilight();
         }
