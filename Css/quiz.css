@@ -41,14 +41,19 @@ body{
     font-family: regular;
     border-radius: 5px;
     line-height: 23px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-h1{
+.description h1{
     font-size: 30px;
     font-weight: bold;
     padding: 10px;
     font-family: regular;
-    border-bottom: #ffffff solid 2px;
+    border-bottom: #ffffff solid 3px;
+    width: 220px;
     text-shadow: 3px 3px 5px #000000;
 }
 
@@ -236,13 +241,13 @@ footer {
     #display-container {
         margin-top: -10px;
     }
-
-    h1{
-        font-size: 30px;
-    }
-    
     .description{
         font-size: 15px;
+    }
+
+    .description h1{
+        font-size: 30px;
+        width: 170px;
     }
 
     .start-screen,
