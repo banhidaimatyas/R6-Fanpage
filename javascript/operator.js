@@ -71,12 +71,32 @@ render(operators[0]);
 
 function SelectedItem(index){
     active = operators[index];
-    render();
+    render(active);
 }
 
-function render(){
+function render(operator){
     document.body.style.backgroundImage = `url(${active.image})`;
     document.getElementById("operator-name").innerText = active.name;
+    
+    const speedDots = document.querySelectorAll(".dot_speed");
+    const healthDots = document.querySelectorAll(".dot_health");
+
+
+    speedDots.forEach((dot, index) => {
+        if (index < operator.speed) {
+            dot.style.backgroundColor = "blue";
+        } else {
+            dot.style.backgroundColor = "gray";
+        }
+    });
+
+    healthDots.forEach((dot, index) => {
+        if (index < operator.health) {
+            dot.style.backgroundColor = "blue";
+        } else {
+            dot.style.backgroundColor = "gray";
+        }
+    });
 }
 
 
