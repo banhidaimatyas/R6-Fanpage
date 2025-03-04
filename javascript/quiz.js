@@ -1,4 +1,4 @@
-let timeLeft = document.querySelector(".time-left");
+let scoreImage = document.getElementById("score-image");
 let quizContainer = document.getElementById("container");
 let nextBtn = document.getElementById("next-button");
 let countOfQuestion = document.querySelector(".number-of-question");
@@ -12,88 +12,141 @@ let questionCount;
 let scoreCount = 0;
 let count = 31;
 let countdown;
+let timeLeft = document.getElementById("time-left");
+
+const changeImageBasedOnScore = (userScore, maxScore) => {
+    let imageSrc = "";
+    if (userScore > 14) {
+        imageSrc = "../Images/Ranks/champion.png";
+    } else if (userScore > 12 ) {
+        imageSrc = "../Images/Ranks/diamond.avif";
+    } else if (userScore > 10) {
+        imageSrc = "../Images/Ranks/emerald.avif";
+    } else if(userScore > 8){
+        imageSrc = "../Images/Ranks/platinum.png";
+    } else if(userScore > 6){
+        imageSrc = "../Images/Ranks/gold.png";
+    } else if(userScore > 4){
+        imageSrc = "../Images/Ranks/silver.png";
+    } else if(userScore > 2){
+        imageSrc = "../Images/Ranks/bronze.png";
+    } else {
+        imageSrc = "../Images/Ranks/copper.png";  
+    }
+    scoreImage.src = imageSrc;
+};
 
 const quizArray = [
     {
         id: "0",
-        question: "1. kérdés",//(bele ne írd a végén hogy hanyadik kérdés, mert a sorrend randomizált)
-        options: ["1. válasz", "2. válasz", "3. válasz"],
-        correct: "'Helyes válasz'",//(csak ismételd meg az egyik választ)
+        question: "Ki lesz az új operátor Y10S1-ban?",
+        options: ["Phobos", "Aurora", "Phoebe"],
+        correct: "Aurora",
     },
     { 
         id: "1",
-        question: "2. kérdés",
-        options: ["1. válasz", "2. válasz", "3. válasz"],
-        correct: "'Helyes válasz'",
+        question: "Mikor adták ki a játékot?",
+        options: ["2015. december 1.", "2014. március 6.", "2015. március 6."],
+        correct: "2015. december 1.",
     },
     {
         id: "2",
-        question: "3. kérdés",
-        options: ["1. válasz", "2. válasz", "3. válasz"],
-        correct: "'Helyes válasz'",
+        question: "Hogy Fogják hívni a játékot Y10S2-től?",
+        options: ["Tom Clancy's Rainbow Six Siege 2", "Siege X", "Rainbow Six Siege X"],
+        correct: "Siege X",
     },
     {
         id: "3",
-        question: "4. kérdés",
-        options: ["1. válasz", "2. válasz", "3. válasz"],
-        correct: "'Helyes válasz'",
+        question: "Mi volt a legutolsó jétékbeli esemény neve?",
+        options: ["Money Heist", "Outbreak", "Assault on Hereford"],
+        correct: "Assault on Hereford",
     },
     {
         id: "4",
-        question: "5. kérdés",
-        options: ["1. válasz", "2. válasz", "3. válasz"],
-        correct: "'Helyes válasz'",
+        question: "Ki az egyetlen észak-koreai operátor?",
+        options: ["Vigil", "Nokk", "Deimos"],
+        correct: "Vigil",
     },
     {
         id: "5",
-        question: "6. kérdés",
-        options: ["1. válasz", "2. válasz", "3. válasz"],
-        correct: "'Helyes válasz'",
+        question: "Milyen származású Ace?",
+        options: ["grúz", "norvég", "örmény"],
+        correct: "norvég",
     },
     {
         id: "6",
-        question: "7. kérdés",
-        options: ["1. válasz", "2. válasz", "3. válasz"],
-        correct: "'Helyes válasz'",
+        question: "Melyik ország nincsen reprezentálva?",
+        options: ["Franciaország", "Spanyolország", "Magyarország"],
+        correct: "Magyarország",
     },
     {
         id: "7",
-        question: "8. kérdés",
-        options: ["1. válasz", "2. válasz", "3. válasz"],
-        correct: "'Helyes válasz'",
+        question: "Melyik pálya nincs a Ranked pályák között?",
+        options: ["House", "Theme Park", "Outback"],
+        correct: "House",
     },
     {
         id: "8",
-        question: "9. kérdés",
-        options: ["1. válasz", "2. válasz", "3. válasz",],
-        correct: "'Helyes válasz'",
+        question: "Ki nyerte a 2025-ös Siege Invitationalt?",
+        options: ["Unwanted", "BDS", "Faze",],
+        correct: "Faze",
     },
     {
         id: "9",
-        question: "10. kérdés",
-        options: ["1. válasz", "Citromsárga", "3. válasz"],
-        correct: "'Helyes válasz'",
+        question: "Mennyi operátor van a játékban?",
+        options: ["71", "74", "72"],
+        correct: "74",
     },
     {
         id: "10",
-        question: "11. kérdés",
-        options: ["1. válasz", "2. válasz", "3. válasz"],
-        correct: "'Helyes válasz'",
+        question: "Mi a neve Vigil shotgun-jának?",
+        options: ["BOSG.12.2", "K1A", "K2A"],
+        correct: "BOSG.12.2",
     },
     {
         id: "11",
-        question: "12. kérdés",
-        options: ["1. válasz", "2. válasz", "3. válasz"],
-        correct: "'Helyes válasz'",
+        question: "Van C4-e Kapkan-nak?",
+        options: ["Talán", "Nincs", "Van"],
+        correct: "Van",
     },
-    
-    ];
+    {
+        id: "12",
+        question: "Melyik a legtöbbet játszott támadó operátor?",
+        options: ["Blitz", "Jackal", "Ash"],
+        correct: "Ash",
+    },
+    {
+        id: "13",
+        question: "Hány reinforce-al kezdik a Preparation Phase-t a védekezők Ranked-ben?",
+        options: ["10", "9", "8"],
+        correct: "10",
+    },
+    {
+        id: "14",
+        question: 'Melyik operátornak a képessége az "Rtila"?',
+        options: ["Mozzie", "Kaid", "Mozzie"],
+        correct: "Kaid",
+    },
+    {
+        id: "15",
+        question: 'Melyik operátor mondja ezt: "I see Ive got your heart racing."',
+        options: ["Azami", "IQ", "Pulse"],
+        correct: "Pulse",
+    },
+];
+
+window.onload = function () {
+    let timeLeft = document.getElementById("time-left");
+
+    startScreen.classList.remove("hide");
+    displayContainer.classList.add("hide");
+};
 
 restart.addEventListener("click", () => {
     initial();
     displayContainer.classList.remove("hide");
     scoreContainer.classList.add("hide");
-    });
+});
 
 nextBtn.addEventListener(
     "click",
@@ -101,30 +154,33 @@ nextBtn.addEventListener(
         questionCount += 1;
 
         if (questionCount == quizArray.length) {
-        clearInterval(countdown);
-        displayContainer.classList.add("hide");
-        scoreContainer.classList.remove("hide");
+            clearInterval(countdown);
+            displayContainer.classList.add("hide");
+            scoreContainer.classList.remove("hide");
 
-        userScore.innerHTML = "Az eredményed " + scoreCount + "/" + questionCount;
+            userScore.innerHTML = "Az eredményed: " + scoreCount + "/" + quizArray.length + " pont.";
+
+            changeImageBasedOnScore(scoreCount, quizArray.length);
         } else {
-        countOfQuestion.innerHTML =
-            questionCount + 1 + " a " + quizArray.length + " kérdésből";
+            countOfQuestion.innerHTML =
+                questionCount + 1 + " a " + quizArray.length + " kérdésből";
 
-        quizDisplay(questionCount);
-        count = 31;
-        clearInterval(countdown);
-        timerDisplay();
+            quizDisplay(questionCount);
+            count = 31;
+            clearInterval(countdown);
+            timerDisplay();
         }
     })
-    );
+);
 
 const timerDisplay = () => {
+    if (countdown) clearInterval(countdown);
     countdown = setInterval(() => {
         count--;
         timeLeft.innerHTML = `${count}s`;
         if (count == 0) {
-        clearInterval(countdown);
-        displayNext();
+            clearInterval(countdown);
+            displayNext();
         }
     }, 1000);
 };
@@ -137,9 +193,9 @@ const quizDisplay = (questionCount) => {
     });
 
     quizCards[questionCount].classList.remove("hide");
-    };
+};
 
-    function quizCreator() {
+function quizCreator() {
     quizArray.sort(() => Math.random() - 0.5);
 
     for (let i of quizArray) {
@@ -188,9 +244,9 @@ function checker(userOption) {
     options.forEach((element) => {
         element.disabled = true;
     });
-    }
+}
 
-    function initial() {
+function initial() {
     quizContainer.innerHTML = "";
     questionCount = 0;
     scoreCount = 0;
@@ -199,15 +255,10 @@ function checker(userOption) {
     timerDisplay();
     quizCreator();
     quizDisplay(questionCount);
-    }
+}
 
-    startButton.addEventListener("click", () => {
+startButton.addEventListener("click", () => {
     startScreen.classList.add("hide");
     displayContainer.classList.remove("hide");
     initial();
-    });
-
-    window.onload = () => {
-    startScreen.classList.remove("hide");
-    displayContainer.classList.add("hide");
-};
+});

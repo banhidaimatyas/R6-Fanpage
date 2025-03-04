@@ -1,11 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Css/style.css">
     <script src="Javascript/navbar.js"></script>
-    <title>About us</title>
+    <title>Rólunk</title>
+    <style>
+        #about_us{ 
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 3vh;
+        }
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .operator {
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .operator img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .operator:hover {
+            transform: scale(1.05);
+        }
+        @media (max-width: 900px) {
+            .team {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -14,10 +51,8 @@
                 <ul>
                     <li><a href="index.html">Főoldal</a></li>
                     <li><a href="operator.html">Operátorok</a></li>
-                    <li><a href="esport.html">Esport</a></li>
-                    <li><a href="seasons.html">Szezonok</a></li>
                     <li><a href="about_us.html">Rólunk</a></li>
-                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="quiz.html">Kvíz</a></li>
                     <li><a href="guesser.html">Guesser</a></li>
                     <li><a href="game_show.html">Játékról</a></li>
                 </ul>
@@ -29,12 +64,10 @@
                     <div class="dropdown-content" id="myDropdown">
                         <a href="index.html">Főoldal</a>
                         <a href="operator.html">Operátorok</a>
-                        <a href="esport.html">Esport</a>
-                        <a href="seasons.html">Szezonok</a>
                         <a href="about_us.html">Rólunk</a>
-                        <a href="quiz.html">Quiz</a>
+                        <a href="quiz.html">Kvíz</a>
                         <a href="guesser.html">Guesser</a>
-                        <a href="game_show.html">Játéról</a>
+                        <a href="game_show.html">Játékról</a>
                         
                     </div>
                 </div> 
@@ -42,9 +75,34 @@
         </nav>
     </header>
 
-    
+
     <article>
-        <p>Something</p>
+    
+        <div id="about_us">
+            <h1>A csapatunkról</h1>
+            <p>"Pontosság. Stratégia. Győzelem." - Az R6 rajongók taktikai elitje</p>
+        </div>
+    
+        <section class="team">
+            <div class="operator">
+                <img src="" alt="Operator 1">
+                <h2>Ghost</h2>
+                <p>Role: Attacker</p>
+                <p>"Speed and aggression, no room for hesitation."</p>
+            </div>
+            <div class="operator">
+                <img src="" alt="Operator 2">
+                <h2>Viper</h2>
+                <p>Role: Defender</p>
+                <p>"Hold the line. No one gets through."</p>
+            </div>
+            <div class="operator">
+                <img src="" alt="Operator 3">
+                <h2>Echo</h2>
+                <p>Role: Support</p>
+                <p>"Intel is power. I always have eyes on the enemy."</p>
+            </div>
+        </section>
     </article>
 
 

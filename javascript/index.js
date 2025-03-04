@@ -7,12 +7,6 @@ function navigation(event) {
     case "nav2":
       window.location.href = "../operator.html";
       break;
-    case "nav3":
-      window.location.href = "../seasons.html";
-      break;
-    case "nav4":
-      window.location.href = "../esport.html";
-      break;
     case "nav5":
       window.location.href = "../quiz.html";
       break;

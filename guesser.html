@@ -1,12 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Css/style.css">
+    <link rel="stylesheet" href="Css/guesser.css">
     <script src="Javascript/navbar.js"></script>
-    <title>R6_Guesser</title>
+    <script src="Javascript/guesser.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/maphilight/1.4.0/jquery.maphilight.min.js"></script>
+    <script>
+        // maphiglight color change
+        $.fn.maphilight.defaults = {
+            fill: true,
+            fillColor: '000000',
+            fillOpacity: 0.2,
+            stroke: true,
+            strokeColor: '0000ff',
+            strokeOpacity: 1,
+            strokeWidth: 3,
+            fade: true,
+            alwaysOn: false,
+            neverOn: false,
+            groupBy: false,
+            wrapClass: true,
+            shadow: false,
+            shadowX: 0,
+            shadowY: 0,
+            shadowRadius: 6,
+            shadowColor: '000000',
+            shadowOpacity: 0.5,
+            shadowPosition: 'outside',
+            shadowFrom: false
+        }
+
+
+        function highlightMap() {
+            $('.map').maphilight();
+        }
+
+        $(document).ready(function () {
+            // Call this function manually whenever you need the maphilight effect
+            highlightMap();
+        });
+    </script>
+    <title>Guesser</title>
+
 </head>
+
 <body>
     <header>
         <nav>
@@ -14,10 +57,8 @@
                 <ul>
                     <li><a href="index.html">Főoldal</a></li>
                     <li><a href="operator.html">Operátorok</a></li>
-                    <li><a href="esport.html">Esport</a></li>
-                    <li><a href="seasons.html">Szezonok</a></li>
                     <li><a href="about_us.html">Rólunk</a></li>
-                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="quiz.html">Kvíz</a></li>
                     <li><a href="guesser.html">Guesser</a></li>
                     <li><a href="game_show.html">Játékról</a></li>
                 </ul>
@@ -29,22 +70,30 @@
                     <div class="dropdown-content" id="myDropdown">
                         <a href="index.html">Főoldal</a>
                         <a href="operator.html">Operátorok</a>
-                        <a href="esport.html">Esport</a>
-                        <a href="seasons.html">Szezonok</a>
                         <a href="about_us.html">Rólunk</a>
-                        <a href="quiz.html">Quiz</a>
+                        <a href="quiz.html">Kvíz</a>
                         <a href="guesser.html">Guesser</a>
-                        <a href="game_show.html">Játéról</a>
-                        
+                        <a href="game_show.html">Játékról</a>
                     </div>
-                </div> 
+                </div>
             </div>
         </nav>
     </header>
 
-    
-    <article>
-        <p>Something</p>
+
+    <article id="content">
+        <div id="menu">
+            <h1>Menü</h1>
+            <p>Ez a játék igénybe fogja venni a tájékozódási képességedet. 4 féle pálya közül választhatsz:</p>
+                <div id="button-grid">
+                    <button class="button" onclick="startGame('Border')">Border</button>
+                    <button class="button" onclick="startGame('Oregon')">Oregon</button>
+                    <button class="button" onclick="startGame('Kafe')">Kafe</button>
+                    <button class="button" onclick="startGame('Chalet')">Chalet</button>
+                </div>
+                
+        </div>
+        <div id="image-container"></div>
     </article>
 
 
@@ -55,9 +104,9 @@
             </div>
             <div class="media">
                 <ul>
-                    <li id="github"><img  src="Images/github.png" alt="github"></li>
-                    <li id="instagram"><img  src="Images/instagram.png" alt="instagram"></li>
-                    <li id="facebook"><img  src="Images/facebook.png" alt="facebook"></li>
+                    <li id="github"><img src="Images/github.png" alt="github"></li>
+                    <li id="instagram"><img src="Images/instagram.png" alt="instagram"></li>
+                    <li id="facebook"><img src="Images/facebook.png" alt="facebook"></li>
                 </ul>
             </div>
             <div id="aboutus" class="text">
@@ -67,4 +116,5 @@
         <script src="Javascript/footer.js"></script>
     </footer>
 </body>
+
 </html>

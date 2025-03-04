@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
-    <script src="Javascript/navbar.js"></script>
     <link rel="stylesheet" href="Css/style.css">
     <link rel="stylesheet" href="Css/quiz.css"/>
+    <title>Kvíz</title>
 </head>
 <body>
     <header>
@@ -15,10 +14,8 @@
                 <ul>
                     <li><a href="index.html">Főoldal</a></li>
                     <li><a href="operator.html">Operátorok</a></li>
-                    <li><a href="esport.html">Esport</a></li>
-                    <li><a href="seasons.html">Szezonok</a></li>
                     <li><a href="about_us.html">Rólunk</a></li>
-                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="quiz.html">Kvíz</a></li>
                     <li><a href="guesser.html">Guesser</a></li>
                     <li><a href="game_show.html">Játékról</a></li>
                 </ul>
@@ -30,12 +27,10 @@
                     <div class="dropdown-content" id="myDropdown">
                         <a href="index.html">Főoldal</a>
                         <a href="operator.html">Operátorok</a>
-                        <a href="esport.html">Esport</a>
-                        <a href="seasons.html">Szezonok</a>
                         <a href="about_us.html">Rólunk</a>
-                        <a href="quiz.html">Quiz</a>
+                        <a href="quiz.html">Kvíz</a>
                         <a href="guesser.html">Guesser</a>
-                        <a href="game_show.html">Játéról</a>
+                        <a href="game_show.html">Játékról</a>
                         
                     </div>
                 </div> 
@@ -44,26 +39,35 @@
     </header>
 
     <div class="start-screen">
+        <div class="description">
+            <h1><b>R6 Kvíz</b></h1>
+            <h2>Teszteld le R6 tudásod, ezzel a kvízzel!</h2>
+            <p>Minden kérdésnél 30 ms áll rendelkezésre választani a 3 válasz lehetőség közül!</p>
+            <p>Ha egy kérdésre nem tudsz vagy nem akarsz válaszolni, akkor nyomj a "Következő" gombra!</p>
+            <p>De jól vigyázz, ha egy kérdést átugrasz, akkor később már nem térhetsz vissza rá!</p>
+        </div>
         <button id="start-button">Start</button>
     </div>
+
     <div id="display-container">
         <div class="header">
             <div class="number-of-count">
                 <span class="number-of-question">1 a 12 kérdésből</span>
         </div>
         <div class="timer-div">
-            <img src="Images/clock.png" />
-            <span class="time-left">30s</span>
-        </div>
+            <span id="time-left">30s</span>
+        </div>        
         </div>
         <div id="container">
         </div>
         <button id="next-button">Következő</button>
         </div>
         <div class="score-container hide">
+            <img id="score-image" src="Images/Ranks/copper.png" alt="Score Image"/>
             <h2 id="user-score">Pontok</h2>
             <button id="restart">Újra</button>
         </div>
+
         <script src="Javascript/quiz.js"></script>
         
         <footer>
@@ -73,14 +77,17 @@
                 </div>
                 <div class="media">
                     <ul>
-                        <li><img src="Images/github.png" alt="github"></li>
-                        <li><img src="Images/instagram.png" alt="instagram"></li>
-                        <li><img src="Images/facebook.png" alt="facebook"></li>
+                        <li id="github"><img  src="Images/github.png" alt="github"></li>
+                        <li id="instagram"><img  src="Images/instagram.png" alt="instagram"></li>
+                        <li id="facebook"><img  src="Images/facebook.png" alt="facebook"></li>
                     </ul>
                 </div>
-                <div class="empty"></div>
+                <div id="aboutus" class="text">
+                    <p>rólunk</p>
+                </div>
             </div>
             <script src="Javascript/footer.js"></script>
         </footer>
+    <script src="Javascript/navbar.js"></script>
 </body>
 </html>
