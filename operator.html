@@ -1,12 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="hu">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Css/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Css/operator.css" />
+    <link rel="stylesheet" href="Css/style.css" />
     <script src="Javascript/navbar.js"></script>
     <title>Operátorok</title>
 </head>
+
 <body>
     <header>
         <nav>
@@ -22,8 +26,7 @@
             </div>
             <div class="mobile-nav">
                 <div class="dropdown">
-                    <button class="dropbtn" onclick="myFunction()">Menü
-                    </button>
+                    <button class="dropbtn" onclick="myFunction()">Menü</button>
                     <div class="dropdown-content" id="myDropdown">
                         <a href="index.html">Főoldal</a>
                         <a href="operator.html">Operátorok</a>
@@ -32,16 +35,127 @@
                         <a href="guesser.html">Guesser</a>
                         <a href="game_show.html">Játékról</a>
                     </div>
-                </div> 
+                </div>
             </div>
         </nav>
+        <br />
+        <br />
     </header>
-    
-    
-    <article>
-        <p>Something</p>
-    </article>
 
+    <div class="operators-container">
+        <div class="left">
+            <p style="font-weight: bold; font-size: 40px" id="operator-name"></p>
+            <div class="health">
+                <div style="text-align: center">
+                    <br>
+                    <h1>Speed</h1>
+                    <span  class="dot_speed dot"></span>
+                    <span  class="dot_speed dot"></span>
+                    <span  class="dot_speed dot"></span>
+                </div>
+                <br>
+                <br>
+                <div style="text-align: center">
+                    <h1>Health</h1>
+                    <span  class="dot_health dot"></span>
+                    <span  class="dot_health dot"></span>
+                    <span  class="dot_health dot"></span>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="card-grid">
+                <div class="card" onmouseover="highlight(event)" onmouseout="styleremove(event)">
+                    <div class="image-container">
+                        <div class="overlay-text"></div>
+                        <div class="image">
+                            <img onclick="SelectedItem(0)" src="Images/operator_images/aruni.png" style="height: 80px"
+                                alt="Aruni" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card" onmouseover="highlight(event)" onmouseout="styleremove(event)">
+                    <div class="image-container">
+                        <div class="overlay-text"></div>
+                        <div class="image">
+                            <img onclick="SelectedItem(3)" src="Images/operator_images/iq.png" style="height: 80px"
+                                alt="game" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onmouseover="highlight(event)" onmouseout="styleremove(event)">
+                    <div class="image-container">
+                        <div class="overlay-text"></div>
+                        <div class="image">
+                            <img onclick="SelectedItem(6)" src="Images/operator_images/maestro.png" style="height: 80px"
+                                alt="game" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onmouseover="highlight(event)" onmouseout="styleremove(event)">
+                    <div class="image-container">
+                        <div class="overlay-text"></div>
+                        <div class="image">
+                            <img onclick="SelectedItem(1)" src="Images/operator_images/rook.png" style="height: 80px"
+                                alt="game" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onmouseover="highlight(event)" onmouseout="styleremove(event)">
+                    <div class="image-container">
+                        <div class="overlay-text"></div>
+                        <div class="image">
+                            <img onclick="SelectedItem(4)" src="Images/operator_images/tachanka.png"
+                                style="height: 80px" alt="game" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onmouseover="highlight(event)" onmouseout="styleremove(event)">
+                    <div class="image-container">
+                        <div class="overlay-text"></div>
+                        <div class="image">
+                            <img onclick="SelectedItem(7)" src="Images/operator_images/thunderbird.png"
+                                style="height: 80px" alt="game" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onmouseover="highlight(event)" onmouseout="styleremove(event)">
+                    <div class="image-container">
+                        <div class="overlay-text"></div>
+                        <div class="image">
+                            <img onclick="SelectedItem(2)" src="Images/operator_images/vigil.png" style="height: 80px"
+                                alt="game" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onmouseover="highlight(event)" onmouseout="styleremove(event)">
+                    <div class="image-container">
+                        <div class="overlay-text"></div>
+                        <div class="image">
+                            <img onclick="SelectedItem(5)" src="Images/operator_images/wamai.png" style="height: 80px"
+                                alt="game" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onmouseover="highlight(event)" onmouseout="styleremove(event)">
+                    <div class="image-container">
+                        <div class="overlay-text"></div>
+                        <div class="image">
+                            <img onclick="SelectedItem(8)" src="Images/operator_images/zero.png" style="height: 80px"
+                                alt="game" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="flex-container">
@@ -50,16 +164,23 @@
             </div>
             <div class="media">
                 <ul>
-                    <li id="github"><img  src="Images/github.png" alt="github"></li>
-                    <li id="instagram"><img  src="Images/instagram.png" alt="instagram"></li>
-                    <li id="facebook"><img  src="Images/facebook.png" alt="facebook"></li>
+                    <li id="github"><img src="Images/github.png" alt="github" /></li>
+                    <li id="instagram">
+                        <img src="Images/instagram.png" alt="instagram" />
+                    </li>
+                    <li id="facebook">
+                        <img src="Images/facebook.png" alt="facebook" />
+                    </li>
                 </ul>
             </div>
             <div id="aboutus" class="text">
                 <p>rólunk</p>
             </div>
         </div>
+        <script src="javascript/index.js"></script>
+        <script src="javascript/operator.js"></script>
         <script src="Javascript/footer.js"></script>
     </footer>
 </body>
+
 </html>
