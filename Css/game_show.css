@@ -1,0 +1,107 @@
+@font-face {
+    font-family: navFont;
+    src: url(../Fonts/BebasNeue-Regular.ttf);
+}
+
+@font-face {
+    font-family: regular;
+    src: url(../Fonts/Roboto_SemiCondensed-Regular.ttf);
+}
+
+* {
+    font-family: regular;
+}
+
+body{
+    background-color: #333;
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    margin: auto;
+}
+
+.carousel-inner {
+    height: auto;
+    width: 100%;
+}
+
+.carousel-inner .item {
+    height: auto;
+    width: 100%;
+}
+
+.carousel-image {
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+    object-position: bottom;
+}
+
+#game-container{
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+#game{
+    color: red;
+    line-height: 30px;
+    padding: 40px 20px;
+    width: 80%;
+    background-color: #141414;
+    margin: 30px;
+    border: 2px #750808 solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#game h1{
+    font-size: 60px;
+    border-bottom: red solid 4px;
+    padding: 10px;
+    font-family: navFont;
+    width: 450px;
+}
+
+#description{
+    font-size: 18px;
+    padding-top: 15px;
+}
+
+@media only screen and (max-width: 994px) {
+    #game{
+        padding: 22px 20px;
+    }
+
+    #game h1{
+        font-size: 35px;
+        border-bottom: red solid 3px;
+        width: 250px;
+    }
+    
+    #description{
+        font-size: 15px;
+    }
+
+    .carousel {
+        width: 90%;
+    }
+    
+    .carousel-inner {
+        height: 35vh;
+    }
+
+    .carousel-image {
+        height: 35vh;
+    }
+}
