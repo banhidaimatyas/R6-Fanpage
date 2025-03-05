@@ -1,0 +1,56 @@
+#about_us{ 
+    background-color: #1a1a1a;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 3vh;
+    font-size: 35px;
+    line-height: 50px;
+}
+#about_us h1{
+    font-weight: bolder;
+}
+.team {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+.operator {
+    background: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    height: 80vh;
+    text-align: center;
+    transition: transform 0.3s;
+    line-height: 25px;
+    font-size: 22px;
+}
+.operator h2{
+    font-weight: bold;
+}
+.operator img {
+    width: auto;
+    height: 60vh;
+    border-radius: 10px;
+}
+.operator:hover {
+    transform: scale(1.05);
+}
+@media (max-width: 900px) {
+    .team {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media only screen and (max-width: 994px) {
+    #about_us{ 
+    font-size: 20px;
+    line-height: 25px;
+    }
+    .operator{
+        font-size: 18px;
+    }
+}
