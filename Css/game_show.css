@@ -77,18 +77,6 @@ body{
     padding-top: 15px;
 }
 
-.card_defender {
-    display: flex;
-    flex-direction: column;
-    
-    color: white;
-    box-shadow: 0 4px 8px 0 white;
-    text-align: center;
-    min-width: 400px;
-    margin-left: 200px;
-    border-radius: 5px;
-}
-
 .card_img{
     border-radius: 5px 5px 0px 0px;
 }
@@ -98,20 +86,28 @@ h2{
     font-size: larger;
 }
 
-.card_attacker {
+.card_defender, .card_attacker {
     display: flex;
     flex-direction: column;
     color: white;
     box-shadow: 0 4px 8px 0 white;
-    min-width: 400px;
     text-align: center;
-    margin-left: 200px;
+    margin: 10px;
+    border-radius: 5px;
 }
 
+.card_defender img, .card_attacker img {
+    width: 100%;
+    border-radius: 5px 5px 0px 0px;
+}
 
-
-
-
+#operators h2{
+    font-size: 50px;
+    font-family: navFont;
+    color: red;
+    margin: 30px;
+    text-align: center;
+}
 
 @media only screen and (max-width: 994px) {
     #game{
@@ -141,7 +137,7 @@ h2{
     }
 
     .card_attacker{
-    min-width: 200px;
+        min-width: 200px;
     }
 
     .card_defender{
