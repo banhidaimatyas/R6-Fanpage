@@ -725,10 +725,12 @@ const Kafe = {
 let points = 0;
 let round = 1;
 let gameRunning = false;
+let tasksCompleted = []
 
 function startGame(chosenMap) {
   removeMenu();
   resetGame();
+  tasksCompleted = []
   if (!gameRunning) {
     gameRunning = true;
     console.log("Start");
@@ -816,7 +818,16 @@ function getRoomToFind(floor, chosenMap) {
   };
 
   const rooms = Object.values(levels[chosenMap][getFloorIndex(floor)].rooms);
-  return rooms[Math.floor(Math.random() * rooms.length)].roomName;
+  
+  let randomFloor = rooms[Math.floor(Math.random() * rooms.length)].roomName;
+  
+  do {
+    randomFloor = rooms[Math.floor(Math.random() * rooms.length)].roomName;
+  }
+  while (tasksCompleted.includes(randomFloor));
+  tasksCompleted.push(randomFloor)
+  console.log(randomFloor)
+  return randomFloor
 }
 
 function getFloorIndex(floor) {
@@ -909,7 +920,7 @@ function setupImageMap(floor, targetRoom, chosenMap) {
 }
 
 function handleRoomClick(clickedRoom, targetRoom, chosenMap) {
-  console.log(clickedRoom);
+  // console.log(clickedRoom);
   if (clickedRoom === targetRoom) points++;
   cleanUpRound();
   nextRound(chosenMap);
