@@ -1,13 +1,14 @@
-body{
+body {
     background-color: grey;
     margin: 0;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: top center;
     height: 100%;
-    min-width: 100%;
+    background-attachment: fixed;
 }
 
-.container{
+.container {
     margin-top: 150px;
     display: flex;
     height: 85vh;
@@ -21,18 +22,23 @@ body{
 
 .left{
     min-width: 220px;
-    background-color: white;
+    background-color: #201a1a9d;
     height: 200px;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
- }
- 
- .left p{
-    background-color: black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.left p{
     color: white;
     text-align: center;
+}
+
+.left h1{
+    color: white;
 }
 
 body, html {
@@ -40,11 +46,10 @@ body, html {
     height: 100%;
     margin: 0;
     padding: 0;
-  }
+}
 
 .middle{
     width: 100px;
-    
 }
 
 .right{
@@ -69,16 +74,15 @@ body, html {
     min-height: 1000px;
     justify-content: space-around;
     align-items: center;
-    
 }
 
-.dot {
+.dot{
     height: 25px;
     width: 25px;
     background-color: red;
     border-radius: 50%;
     display: inline-block;
-  }
+}
 
 @media screen and (min-width: 900px) {
     .card-grid{

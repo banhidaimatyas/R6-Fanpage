@@ -86,7 +86,7 @@ function render(operator){
         if (index < operator.speed) {
             dot.style.backgroundColor = "blue";
         } else {
-            dot.style.backgroundColor = "gray";
+            dot.style.backgroundColor = "white";
         }
     });
 
@@ -94,7 +94,7 @@ function render(operator){
         if (index < operator.health) {
             dot.style.backgroundColor = "blue";
         } else {
-            dot.style.backgroundColor = "gray";
+            dot.style.backgroundColor = "white";
         }
     });
 }
