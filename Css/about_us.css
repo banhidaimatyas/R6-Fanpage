@@ -51,6 +51,13 @@
     list-style-type: disc;
     margin: 0;
     list-style-position: inside;
+    display: flex;
+    flex-direction: column;
+    padding-left: 165px;
+}
+
+.description ul li{
+    text-align: left;
 }
 
 @media only screen and (max-width: 994px) {
@@ -72,10 +79,19 @@
 @media only screen and (max-width: 550px){
     .operator{
         width: 30vh;
+        height: auto;
     }
 
     .operator img {
         width: 30vh;
         height: auto;
+    }
+
+    .description p, ul{
+        font-size: 18px;
+    }
+
+    .description ul {
+        padding-left: 20px;
     }
 }
