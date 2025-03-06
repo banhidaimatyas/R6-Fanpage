@@ -53,7 +53,6 @@
 }
 #map:hover {
     cursor: pointer;
-
 }
 
 #image-container h2 {
@@ -66,10 +65,7 @@
     font-size: 30px;
     border-left: 2px solid black;
     border-right: 2px solid black;
-    ;
     border-bottom: 2px solid black;
-    ;
-
 }
 
 #content {
@@ -88,7 +84,6 @@
 }
 
 .button {
-
     background-color: #b6b6b6;
     /* Green */
     border: none;
@@ -104,12 +99,9 @@
     border: 2px solid black;
     width: 240px;
     height: 80px;
-
-
 }
 
 #button {
-
     background-color: #b6b6b6;
     /* Green */
     border: none;
@@ -125,8 +117,6 @@
     border: 2px solid black;
     width: 240px;
     height: 80px;
-
-
 }
 
 #button:hover{
@@ -137,10 +127,6 @@
 .button:hover{
     background-color: #ffffff;
     cursor: pointer;
-}
-p{
-    width: 500px;
-    
 }
 
 h1{
