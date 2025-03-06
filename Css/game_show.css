@@ -46,7 +46,6 @@ body{
     align-items: center;
     flex-direction: column;
     display: flex;
-    align-items: center;
     text-align: center;
 }
 
@@ -78,6 +77,42 @@ body{
     padding-top: 15px;
 }
 
+.card_defender {
+    display: flex;
+    flex-direction: column;
+    
+    color: white;
+    box-shadow: 0 4px 8px 0 white;
+    text-align: center;
+    min-width: 400px;
+    margin-left: 200px;
+    border-radius: 5px;
+}
+
+.card_img{
+    border-radius: 5px 5px 0px 0px;
+}
+
+h2{
+    font-weight: bold;
+    font-size: larger;
+}
+
+.card_attacker {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    box-shadow: 0 4px 8px 0 white;
+    min-width: 400px;
+    text-align: center;
+    margin-left: 200px;
+}
+
+
+
+
+
+
 @media only screen and (max-width: 994px) {
     #game{
         padding: 22px 20px;
@@ -103,5 +138,13 @@ body{
 
     .carousel-image {
         height: 35vh;
+    }
+
+    .card_attacker{
+    min-width: 200px;
+    }
+
+    .card_defender{
+    min-width: 200px;
     }
 }
