@@ -9,32 +9,26 @@ function showSlide(index) {
 
     isTransitioning = true;
 
-    // Disable smooth transition during the "wrap-around" between the last and first slides
     const carousel = document.querySelector('.carousel');
     if (index >= totalSlides) {
-        // Smoothly loop back to slide 1
         currentSlide = 0;
-        carousel.style.transition = 'none';  // Disable transition during loop-back
+        carousel.style.transition = 'none';
         updateCarouselPosition();
 
         setTimeout(() => {
-            // Re-enable the smooth transition for the next movement
             carousel.style.transition = 'transform 0.5s ease';
             isTransitioning = false;
-        }, 50);  // Small delay to prevent immediate jump
+        }, 50);
     } else if (index < 0) {
-        // Smoothly loop to the last slide
         currentSlide = totalSlides - 1;
-        carousel.style.transition = 'none';  // Disable transition during loop-back
+        carousel.style.transition = 'none';
         updateCarouselPosition();
 
         setTimeout(() => {
-            // Re-enable the smooth transition for the next movement
             carousel.style.transition = 'transform 0.5s ease';
             isTransitioning = false;
-        }, 50);  // Small delay to prevent immediate jump
+        }, 50);
     } else {
-        // Normal transition for other cases
         currentSlide = index;
         updateCarouselPosition();
         setTimeout(() => {
