@@ -12,36 +12,57 @@
     font-family: regular;
 }
 
-body{
+body {
     background-color: #333;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 80%;
+    margin: auto;
+    overflow: hidden;
 }
 
 .carousel {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70%;
-    margin: auto;
+    transition: transform 0.5s ease;
 }
 
-.carousel-inner {
-    height: auto;
+.carousel-item {
     width: 100%;
+    flex-shrink: 0;
+    transition: opacity 0.5s ease;
 }
 
-.carousel-inner .item {
-    height: auto;
+.carousel-item img {
     width: 100%;
-}
-
-.carousel-image {
     height: auto;
-    width: 100%;
-    object-fit: cover;
-    object-position: bottom;
+    display: block;
 }
 
-#game-container{
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 30px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+#game-container {
     width: 100%;
     align-items: center;
     flex-direction: column;
@@ -49,7 +70,7 @@ body{
     text-align: center;
 }
 
-#game{
+#game {
     color: red;
     line-height: 30px;
     padding: 40px 20px;
@@ -64,7 +85,7 @@ body{
     align-items: center;
 }
 
-#game h1{
+#game h1 {
     font-size: 60px;
     border-bottom: red solid 4px;
     padding: 10px;
@@ -72,36 +93,59 @@ body{
     width: 450px;
 }
 
-#description{
+#description {
     font-size: 18px;
     padding-top: 15px;
 }
 
-.card_img{
+.card_img {
     border-radius: 5px 5px 0px 0px;
 }
 
-h2{
+h2 {
     font-weight: bold;
     font-size: larger;
 }
 
-.card_defender, .card_attacker {
+#operators {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.operator-cards {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.card_defender,
+.card_attacker {
     display: flex;
     flex-direction: column;
-    color: white;
-    box-shadow: 0 4px 8px 0 white;
-    text-align: center;
-    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: #444;
     border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+    text-align: center;
+    color: white;
+    margin: 10px;
+    padding: 10px;
+    width: 46vw;
+    box-sizing: border-box;
 }
 
-.card_defender img, .card_attacker img {
+.card_defender img,
+.card_attacker img {
     width: 100%;
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 15px;
 }
 
-#operators h2{
+
+#operators h2 {
     font-size: 50px;
     font-family: navFont;
     color: red;
@@ -110,37 +154,28 @@ h2{
 }
 
 @media only screen and (max-width: 994px) {
-    #game{
+    #game {
         padding: 22px 20px;
     }
 
-    #game h1{
+    #game h1 {
         font-size: 35px;
         border-bottom: red solid 3px;
         width: 250px;
     }
-    
-    #description{
+
+    #description {
         font-size: 15px;
     }
 
-    .carousel {
+    .operator-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card_defender,
+    .card_attacker {
         width: 90%;
-    }
-    
-    .carousel-inner {
-        height: 35vh;
-    }
-
-    .carousel-image {
-        height: 35vh;
-    }
-
-    .card_attacker{
-        min-width: 200px;
-    }
-
-    .card_defender{
-    min-width: 200px;
+        margin-bottom: 20px;
     }
 }
