@@ -69,11 +69,11 @@ body, html {
 
 .operators-container{
     display: flex;
-    gap: 30px;
     height: auto;
     min-height: 1000px;
     justify-content: space-around;
     align-items: center;
+    flex-direction: column;
 }
 
 .dot{
@@ -87,4 +87,9 @@ body, html {
 @media screen and (min-width: 900px) {
     .card-grid{
 	grid-template-columns: auto auto auto}
+
+    .operators-container{
+        flex-direction: row;
+        gap: 30px;
+    }
 }
