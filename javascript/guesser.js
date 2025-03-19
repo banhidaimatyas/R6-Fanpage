@@ -742,7 +742,6 @@ function startGame(chosenMap) {
   tasksCompleted = []
   if (!gameRunning) {
     gameRunning = true;
-    console.log("Start");
     setupRound(chosenMap);
     highlightMap();
   }
@@ -766,7 +765,6 @@ function nextRound(chosenMap) {
   if (round < 9) {
     if (gameRunning) {
       round++;
-      console.log(`Moving to round ${round}`);
       setupRound(chosenMap);
     }
   } else {
@@ -832,7 +830,6 @@ function getRoomToFind(floor, chosenMap) {
   }
   while (tasksCompleted.includes(randomFloor));
   tasksCompleted.push(randomFloor)
-  console.log(randomFloor)
   return randomFloor
 }
 
