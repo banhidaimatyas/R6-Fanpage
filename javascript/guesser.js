@@ -727,6 +727,15 @@ let round = 1;
 let gameRunning = false;
 let tasksCompleted = []
 
+const floorsOfMaps = {
+  Oregon: ["second_floor", "first_floor", "basement"],
+  Border: ["first_floor", "second_floor"],
+  Kafe: ["first_floor", "second_floor", "third_floor"],
+  Chalet: ["second_floor", "first_floor", "basement"],
+};
+
+const levels = { Oregon, Border, Kafe, Chalet };
+
 function startGame(chosenMap) {
   removeMenu();
   resetGame();
@@ -742,6 +751,11 @@ function startGame(chosenMap) {
 function resetGame() {
   points = 0;
   round = 0;
+}
+
+function removeElement(id) {
+  const element = document.getElementById(id);
+  if (element) element.remove();
 }
 
 function removeMenu() {
@@ -797,14 +811,7 @@ function setupRound(chosenMap) {
 }
 
 function getRandomFloor(map) {
-  const floors_of_maps = {
-    Oregon: ["second_floor", "first_floor", "basement"],
-    Border: ["first_floor", "second_floor"],
-    Kafe: ["first_floor", "second_floor", "third_floor"],
-    Chalet: ["second_floor", "first_floor", "basement"],
-  };
-
-  const floors = floors_of_maps[map];
+  const floors = floorsOfMaps[map];
   return floors[Math.floor(Math.random() * floors.length)];
 }
 
@@ -830,65 +837,17 @@ function getRoomToFind(floor, chosenMap) {
 }
 
 function getFloorIndex(floor) {
-  switch (floor) {
-    case "basement":
-      return 0;
-    case "first_floor":
-      return 1;
-    case "second_floor":
-      return 2;
-    case "third_floor":
-      return 3;
-    default:
-      break;
-  }
+  return ["basement", "first_floor", "second_floor", "third_floor"].indexOf(floor);
 }
 
 function createImage(floor, chosenMap) {
-  if (chosenMap === "Oregon") {
-    const img = createElement("img", {
-      id: "img",
-      src: `../Images/Oregon_blueprints/r6-maps-oregon-blueprint-${
-        getFloorIndex(floor) + 1
-      }.jpg`,
-      useMap: "#image-map",
-    });
-    img.setAttribute("class", "map");
-    return img;
-  }
-  if (chosenMap === "Border") {
-    const img = createElement("img", {
-      id: "img",
-      src: `../Images/Border_blueprints/r6-maps-border-blueprint-${getFloorIndex(
-        floor
-      )}.jpg`,
-      useMap: "#image-map",
-    });
-    img.setAttribute("class", "map");
-    return img;
-  }
-  if (chosenMap === "Kafe") {
-    const img = createElement("img", {
-      id: "img",
-      src: `../Images/Kafe_blueprints/r6-maps-kafe-blueprint-${getFloorIndex(
-        floor
-      )}.jpg`,
-      useMap: "#image-map",
-    });
-    img.setAttribute("class", "map");
-    return img;
-  }
-  if (chosenMap === "Chalet") {
-    const img = createElement("img", {
-      id: "img",
-      src: `../Images/Chalet_blueprints/r6-maps-chalet-blueprint-${getFloorIndex(
-        floor
-      )}.jpg`,
-      useMap: "#image-map",
-    });
-    img.setAttribute("class", "map");
-    return img;
-  }
+  const img = createElement("img", {
+    id: "img",
+    src: `../Images/${chosenMap}_blueprints/r6-maps-${chosenMap.toLowerCase()}-blueprint-${getFloorIndex(floor)}.jpg`,
+    useMap: "#image-map",
+    className: "map"
+  });
+  return img;
 }
 
 function setupImageMap(floor, targetRoom, chosenMap) {
@@ -930,46 +889,31 @@ function cleanUpRound() {
 }
 
 function goToMenu() {
-  removeMenu();
+  removeElement("menu");
   const menu = createElement("div", { id: "menu" });
-  const title = createElement("h1", { innerText: "Menü" });
-  const description = createElement("p", {
-    innerText:
-      "Ez a játék igénybe fogja venni a tájékozódási képességedet. 4 féle pálya közül választhatsz:",
-  });
-  const buttonContainer = createElement("div", { id: "button-grid" });
-  const borderButton = createElement("button", {
-    innerText: "Border",
-    onclick: () => {
-      startGame("Border");
-    },
-  });
-  borderButton.setAttribute("class", "button");
-  const oregonButton = createElement("button", {
-    innerText: "Oregon",
-    onclick: () => {
-      startGame("Oregon");
-    },
-  });
-  oregonButton.setAttribute("class", "button");
-  const kafeButton = createElement("button", {
-    innerText: "Kafe",
-    onclick: () => {
-      startGame("Kafe");
-    },
-  });
-  kafeButton.setAttribute("class", "button");
-  const chaletButton = createElement("button", {
-    innerText: "Chalet",
-    onclick: () => {
-      startGame("Chalet");
-    },
-  });
-  chaletButton.setAttribute("class", "button");
-  buttonContainer.append(borderButton, oregonButton, kafeButton, chaletButton);
-  menu.append(title, description, buttonContainer);
+  
+  menu.append(
+    createElement("h1", { innerText: "Menü" }),
+    createElement("p", { innerText: "Ez a játék igénybe fogja venni a tájékozódási képességedet. 4 féle pálya közül választhatsz:" }),
+    createMenuButtons()
+  );
+  
   document.getElementById("content").appendChild(menu);
 }
+
+function createMenuButtons() {
+  const buttonContainer = createElement("div", { id: "button-grid" });
+  ["Border", "Oregon", "Kafe", "Chalet"].forEach(map => {
+    const button = createElement("button", {
+      innerText: map,
+      className: "button",
+      onclick: () => startGame(map)
+    });
+    buttonContainer.appendChild(button);
+  });
+  return buttonContainer;
+}
+
 
 
 function createElement(tag, properties = {}) {
