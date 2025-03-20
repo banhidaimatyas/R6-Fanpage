@@ -727,13 +727,21 @@ let round = 1;
 let gameRunning = false;
 let tasksCompleted = []
 
+const floorsOfMaps = {
+  Oregon: ["second_floor", "first_floor", "basement"],
+  Border: ["first_floor", "second_floor"],
+  Kafe: ["first_floor", "second_floor", "third_floor"],
+  Chalet: ["second_floor", "first_floor", "basement"],
+};
+
+const levels = { Oregon, Border, Kafe, Chalet };
+
 function startGame(chosenMap) {
   removeMenu();
   resetGame();
   tasksCompleted = []
   if (!gameRunning) {
     gameRunning = true;
-    console.log("Start");
     setupRound(chosenMap);
     highlightMap();
   }
@@ -744,6 +752,11 @@ function resetGame() {
   round = 0;
 }
 
+function removeElement(id) {
+  const element = document.getElementById(id);
+  if (element) element.remove();
+}
+
 function removeMenu() {
   document.getElementById("menu").remove();
 }
@@ -752,7 +765,6 @@ function nextRound(chosenMap) {
   if (round < 9) {
     if (gameRunning) {
       round++;
-      console.log(`Moving to round ${round}`);
       setupRound(chosenMap);
     }
   } else {
@@ -797,22 +809,14 @@ function setupRound(chosenMap) {
 }
 
 function getRandomFloor(map) {
-  // floors of each building
-  const floors_of_maps = {
-    Oregon: ["second_floor", "first_floor", "basement"], // oregon floors
-    Border: ["first_floor", "second_floor"], // border
-    Kafe: ["first_floor", "second_floor", "third_floor"],
-    Chalet: ["second_floor", "first_floor", "basement"],
-  };
-
-  const floors = floors_of_maps[map];
+  const floors = floorsOfMaps[map];
   return floors[Math.floor(Math.random() * floors.length)];
 }
 
 function getRoomToFind(floor, chosenMap) {
   const levels = {
-    Oregon: Oregon.levels, // oregon levels
-    Border: Border.levels, // border levels
+    Oregon: Oregon.levels,
+    Border: Border.levels,
     Kafe: Kafe.levels,
     Chalet: Chalet.levels,
   };
@@ -826,78 +830,29 @@ function getRoomToFind(floor, chosenMap) {
   }
   while (tasksCompleted.includes(randomFloor));
   tasksCompleted.push(randomFloor)
-  console.log(randomFloor)
   return randomFloor
 }
 
 function getFloorIndex(floor) {
-  switch (floor) {
-    case "basement":
-      return 0;
-    case "first_floor":
-      return 1;
-    case "second_floor":
-      return 2;
-    case "third_floor":
-      return 3;
-    default:
-      break;
-  }
+  return ["basement", "first_floor", "second_floor", "third_floor"].indexOf(floor);
 }
 
 function createImage(floor, chosenMap) {
-  if (chosenMap === "Oregon") {
-    const img = createElement("img", {
-      id: "img",
-      src: `../Images/Oregon_blueprints/r6-maps-oregon-blueprint-${
-        getFloorIndex(floor) + 1
-      }.jpg`,
-      useMap: "#image-map",
-    });
-    img.setAttribute("class", "map"); // Explicitly setting the class attribute
-    return img;
-  }
-  if (chosenMap === "Border") {
-    const img = createElement("img", {
-      id: "img",
-      src: `../Images/Border_blueprints/r6-maps-border-blueprint-${getFloorIndex(
-        floor
-      )}.jpg`,
-      useMap: "#image-map",
-    });
-    img.setAttribute("class", "map"); // Explicitly setting the class attribute
-    return img;
-  }
-  if (chosenMap === "Kafe") {
-    const img = createElement("img", {
-      id: "img",
-      src: `../Images/Kafe_blueprints/r6-maps-kafe-blueprint-${getFloorIndex(
-        floor
-      )}.jpg`,
-      useMap: "#image-map",
-    });
-    img.setAttribute("class", "map"); // Explicitly setting the class attribute
-    return img;
-  }
-  if (chosenMap === "Chalet") {
-    const img = createElement("img", {
-      id: "img",
-      src: `../Images/Chalet_blueprints/r6-maps-chalet-blueprint-${getFloorIndex(
-        floor
-      )}.jpg`,
-      useMap: "#image-map",
-    });
-    img.setAttribute("class", "map"); // Explicitly setting the class attribute
-    return img;
-  }
+  const img = createElement("img", {
+    id: "img",
+    src: `../Images/${chosenMap}_blueprints/r6-maps-${chosenMap.toLowerCase()}-blueprint-${getFloorIndex(floor)}.jpg`,
+    useMap: "#image-map",
+    className: "map"
+  });
+  return img;
 }
 
 function setupImageMap(floor, targetRoom, chosenMap) {
   const map = createElement("map", { name: "image-map", id: "map" });
   document.getElementById("image-container").appendChild(map);
   const levels = {
-    Oregon: Oregon.levels, // oregon levels
-    Border: Border.levels, // border levels
+    Oregon: Oregon.levels,
+    Border: Border.levels,
     Kafe: Kafe.levels,
     Chalet: Chalet.levels,
   };
@@ -920,7 +875,6 @@ function setupImageMap(floor, targetRoom, chosenMap) {
 }
 
 function handleRoomClick(clickedRoom, targetRoom, chosenMap) {
-  // console.log(clickedRoom);
   if (clickedRoom === targetRoom) points++;
   cleanUpRound();
   nextRound(chosenMap);
@@ -932,117 +886,36 @@ function cleanUpRound() {
 }
 
 function goToMenu() {
-  removeMenu();
+  removeElement("menu");
   const menu = createElement("div", { id: "menu" });
-  const title = createElement("h1", { innerText: "Menü" });
-  const description = createElement("p", {
-    innerText:
-      "Ez a játék igénybe fogja venni a tájékozódási képességedet. 4 féle pálya közül választhatsz:",
-  });
-  const buttonContainer = createElement("div", { id: "button-grid" });
-  const borderButton = createElement("button", {
-    innerText: "Border",
-    onclick: () => {
-      startGame("Border");
-    },
-  });
-  borderButton.setAttribute("class", "button");
-  const oregonButton = createElement("button", {
-    innerText: "Oregon",
-    onclick: () => {
-      startGame("Oregon");
-    },
-  });
-  oregonButton.setAttribute("class", "button");
-  const kafeButton = createElement("button", {
-    innerText: "Kafe",
-    onclick: () => {
-      startGame("Kafe");
-    },
-  });
-  kafeButton.setAttribute("class", "button");
-  const chaletButton = createElement("button", {
-    innerText: "Chalet",
-    onclick: () => {
-      startGame("Chalet");
-    },
-  });
-  chaletButton.setAttribute("class", "button");
-  buttonContainer.append(borderButton, oregonButton, kafeButton, chaletButton);
-  menu.append(title, description, buttonContainer);
+  
+  menu.append(
+    createElement("h1", { innerText: "Menü" }),
+    createElement("p", { innerText: "Ez a játék igénybe fogja venni a tájékozódási képességedet. 4 féle pálya közül választhatsz:" }),
+    createMenuButtons()
+  );
+  
   document.getElementById("content").appendChild(menu);
 }
 
-// instead of document.createElement()
+function createMenuButtons() {
+  const buttonContainer = createElement("div", { id: "button-grid" });
+  ["Border", "Oregon", "Kafe", "Chalet"].forEach(map => {
+    const button = createElement("button", {
+      innerText: map,
+      className: "button",
+      onclick: () => startGame(map)
+    });
+    buttonContainer.appendChild(button);
+  });
+  return buttonContainer;
+}
+
+
+
 function createElement(tag, properties = {}) {
   const element = document.createElement(tag);
   Object.assign(element, properties);
   return element;
 }
 
-// First Floor 1
-{
-  /* <map name="image-map">
-    <area target="" alt="Small Bakery" title="Small Bakery" href="" coords="163,110,255,107,255,179,163,178" shape="poly">
-    <area target="" alt="Bakery" title="Bakery" href="" coords="163,180,255,180,256,324,203,326,203,384,161,386" shape="poly">
-    <area target="" alt="Prep" title="Prep" href="" coords="204,327,309,324,311,384,203,384" shape="poly">
-    <area target="" alt="Kitchen" title="Kitchen" href="" coords="257,190,364,191,365,388,312,386,311,325,259,323" shape="poly">
-    <area target="" alt="Service" title="Service" href="" coords="367,214,491,214,490,300,425,298,426,384,366,384" shape="poly">
-    <area target="" alt="VIP Hall" title="VIP Hall" href="" coords="491,214,526,215,528,325,515,325,514,351,525,355,527,387,585,389,585,426,489,427" shape="poly">
-    <area target="" alt="Freezer" title="Freezer" href="" coords="427,300,489,301,488,386,427,384" shape="poly">
-    <area target="" alt="Christmas" title="Christmas" href="" coords="528,188,585,188,585,326,529,324" shape="poly">
-    <area target="" alt="White Stairs" title="White Stairs" href="" coords="516,325,584,326,585,386,529,385,527,356,514,350" shape="poly">
-    <area target="" alt="Red Stairs" title="Red Stairs" href="" coords="257,51,308,51,309,131,256,131" shape="poly">
-    <area target="" alt="Red Hall" title="Red Hall" href="" coords="255,132,397,134,398,212,366,213,365,188,257,187" shape="poly">
-    <area target="" alt="Coat Check" title="Coat Check" href="" coords="309,52,364,52,364,132,309,132" shape="poly">
-    <area target="" alt="Main Entrance" title="Main Entrance" href="" coords="366,52,457,53,455,133,366,133" shape="poly">
-    <area target="" alt="Brown Stairs" title="Brown Stairs" href="" coords="458,54,529,50,528,85,527,108,494,107,497,89,459,88" shape="poly">
-    <area target="" alt="Lobby" title="Lobby" href="" coords="398,134,457,134,458,90,495,89,495,108,527,112,526,186,526,212,400,211" shape="poly">
-    <area target="" alt="Tables" title="Tables" href="" coords="531,50,585,54,583,184,527,184" shape="poly">
-</map> */
-}
-
-//Second floor
-{
-  /* <map name="image-map">
-    <area target="" alt="Red Stairs" title="Red Stairs" href="" coords="223,55,276,54,277,121,222,121" shape="poly">
-    <area target="" alt="Brown Stairs" title="Brown Stairs" href="" coords="425,40,424,80,489,81,491,40" shape="poly">
-    <area target="" alt="White Stairs" title="White Stairs" href="" coords="515,330,515,393,583,391,583,329" shape="poly">
-    <area target="" alt="Library" title="Library" href="" coords="500,124,582,124,582,266,501,265" shape="poly">
-    <area target="" alt="Reading" title="Reading" href="" coords="394,178,498,178,499,266,395,265" shape="poly">
-    <area target="" alt="Hell" title="Hell" href="" coords="493,40,583,39,582,121,497,121,491,80" shape="poly">
-    <area target="" alt="Pillars" title="Pillars" href="" coords="355,102,355,83,425,82,488,82,495,124,497,174,394,174,352,167" shape="poly">
-    <area target="" alt="Chandelier" title="Chandelier" href="" coords="278,39,345,39,422,41,421,78,355,81,352,101,342,102,341,123,281,121" shape="poly">
-    <area target="" alt="Red Hall" title="Red Hall" href="" coords="222,124,351,125,351,166,221,164" shape="poly">
-    <area target="" alt="Mining" title="Mining" href="" coords="222,166,353,168,353,256,222,255" shape="poly">
-    <area target="" alt="Trains" title="Trains" href="" coords="222,256,353,258,353,392,221,390" shape="poly">
-    <area target="" alt="90" title="90" href="" coords="355,168,392,175,393,266,473,267,475,305,356,303" shape="poly">
-    <area target="" alt="Laundry" title="Laundry" href="" coords="515,268,581,267,581,327,516,326" shape="poly">
-    <area target="" alt="Laundry Hall" title="Laundry Hall" href="" coords="474,267,513,268,513,330,514,392,479,392,475,307" shape="poly">
-    <area target="" alt="Dining" title="Dining" href="" coords="353,305,473,306,475,392,353,392" shape="poly">
-</map> */
-}
-
-//Third Floor
-{
-  /* <map name="image-map">
-    <area target="" alt="Bathroom" title="Bathroom" href="" coords="400,299,448,298,447,354,401,355" shape="poly">
-    <area target="" alt="White Hall" title="White Hall" href="" coords="399,355,495,354,524,355,524,396,398,395" shape="poly">
-    <area target="" alt="White Stairs" title="White Stairs" href="" coords="525,337,605,335,604,397,525,396" shape="poly">
-    <area target="" alt="Tarp" title="Tarp" href="" coords="497,245,536,244,535,333,524,336,522,354,496,352" shape="poly">
-    <area target="" alt="Cocktail" title="Cocktail" href="" coords="537,122,606,124,606,332,537,333" shape="poly">
-    <area target="" alt="Heaven" title="Heaven" href="" coords="523,42,607,42,607,120,521,120" shape="poly">
-    <area target="" alt="Bar" title="Bar" href="" coords="357,123,531,121,535,243,474,241,470,226,428,227,426,243,359,242" shape="poly">
-    <area target="" alt="Red Stairs" title="Red Stairs" href="" coords="215,57,275,57,275,126,215,125" shape="poly">
-    <area target="" alt="Top Red" title="Top Red" href="" coords="214,125,275,128,274,182,215,181" shape="poly">
-    <area target="" alt="New Hatch" title="New Hatch" href="" coords="276,41,379,44,379,120,358,121,357,102,343,101,344,120,277,120" shape="poly">
-    <area target="" alt="Counter" title="Counter" href="" coords="216,183,274,184,275,241,216,240" shape="poly">
-    <area target="" alt="Cigar" title="Cigar" href="" coords="278,121,311,122,311,167,355,169,357,245,277,243" shape="poly">
-    <area target="" alt="Box" title="Box" href="" coords="313,124,357,124,356,167,313,167" shape="poly">
-    <area target="" alt="Piano" title="Piano" href="" coords="215,241,397,246,397,399,215,396" shape="poly">
-    <area target="" alt="Stock" title="Stock" href="" coords="399,244,428,244,431,228,469,226,473,242,494,244,495,297,399,296" shape="poly">
-    <area target="" alt="Freezer" title="Freezer" href="" coords="449,300,495,299,495,350,449,352" shape="poly">
-</map> */
-}
-
-//The object name is "Kafe"
